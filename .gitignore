@@ -380,6 +380,7 @@ FodyWeavers.xsd
 .idea/*
 !/.idea/codeStyles
 !/.idea/runConfigurations
+.idea/workspace.xml
 
 
 # VS Code files for those working on multiple tools

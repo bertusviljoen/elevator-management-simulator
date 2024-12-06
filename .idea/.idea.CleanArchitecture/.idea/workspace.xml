@@ -13,7 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="659da292-2561-48e9-9900-36a3c1e44b92" name="Changes" comment="chore(ide): update workspace settings and ignore JetBrains Rider files&#10;&#10;- Updated `workspace.xml` to replace special characters with HTML &#10;  entities for better XML compliance.&#10;- Modified `.gitignore` to include JetBrains Rider config while &#10;  excluding specific directories to maintain essential IDE settings.">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/build-test.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elevator-Management-Simulator.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Elevator-Management-Simulator.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="feature/bertus_github_build" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,7 +46,7 @@
     ".NET Project.Presentation.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/bertus__github__build",
+    "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -170,7 +171,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733456687604</updated>
       <workItem from="1733456688820" duration="2287000" />
-      <workItem from="1733464019481" duration="1943000" />
+      <workItem from="1733464019481" duration="2285000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions.">
       <option name="closed" value="true" />
@@ -188,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733465662666</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="chore(ide): update workspace settings and ignore JetBrains Rider files&#10;&#10;- Updated `workspace.xml` to replace special characters with HTML &#10;  entities for better XML compliance.&#10;- Modified `.gitignore` to include JetBrains Rider config while &#10;  excluding specific directories to maintain essential IDE settings.">
+      <option name="closed" value="true" />
+      <created>1733466139880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733466139880</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +216,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/bertus_github_build" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
