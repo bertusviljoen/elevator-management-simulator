@@ -12,14 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="659da292-2561-48e9-9900-36a3c1e44b92" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CleanArchitecture.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Elevator-Management-Simulator.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="659da292-2561-48e9-9900-36a3c1e44b92" name="Changes" comment="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,8 +163,17 @@
       <option name="presentableId" value="Default" />
       <updated>1733456687604</updated>
       <workItem from="1733456688820" duration="2287000" />
-      <workItem from="1733464019481" duration="1020000" />
+      <workItem from="1733464019481" duration="1329000" />
     </task>
+    <task id="LOCAL-00001" summary="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions.">
+      <option name="closed" value="true" />
+      <created>1733465361195</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733465361195</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,5 +194,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions." />
   </component>
 </project>
