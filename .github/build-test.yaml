@@ -1,0 +1,40 @@
+name: Build and Test on Pull Request Creation
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+env:
+  DOTNET_VERSION: "8.0.x"
+  CONFIGURATION: "Release"
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest # For Linux, use ubuntu-latest
+    environment: dev
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@v4
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore Elevator-Management-Simulator.sln
+
+      - name: Build
+        run: dotnet build Elevator-Management-Simulator.sln --configuration ${{ env.CONFIGURATION }} --no-restore
+
+      - name: Run tests
+        run: dotnet test Elevator-Management-Simulator.sln --configuration ${{ env.CONFIGURATION }} --no-build --verbosity minimal
