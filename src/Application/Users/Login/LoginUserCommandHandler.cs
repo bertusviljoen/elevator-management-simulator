@@ -7,6 +7,7 @@ using SharedKernel;
 
 namespace Application.Users.Login;
 
+
 internal sealed class LoginUserCommandHandler(
     IApplicationDbContext context,
     IPasswordHasher passwordHasher,

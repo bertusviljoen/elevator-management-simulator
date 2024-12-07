@@ -1,13 +1,15 @@
-﻿using Domain.Todos;
-using Domain.Users;
+﻿using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Abstractions.Data;
 
+/// <summary> Application database context. </summary>
 public interface IApplicationDbContext
 {
+    /// <summary> Get the DbSet of User entities. </summary>
     DbSet<User> Users { get; }
-    DbSet<TodoItem> TodoItems { get; }
-
+    /// <summary> Save the changes to the database. </summary>
+    /// <param name="cancellationToken"> The cancellation token. </param>
+    /// <returns> The number of state entries written to the database. </returns>
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
