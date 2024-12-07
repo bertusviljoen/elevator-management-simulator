@@ -1,5 +1,4 @@
 ﻿using Application.Abstractions.Data;
-using Domain.Todos;
 using Domain.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -7,13 +6,14 @@ using SharedKernel;
 
 namespace Infrastructure.Database;
 
+/// <inheritdoc cref="IApplicationDbContext" />
 public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IPublisher publisher)
     : DbContext(options), IApplicationDbContext
 {
-    public DbSet<User> Users { get; set; }
+    /// <inheritdoc cref="IApplicationDbContext" />
+    public DbSet<User> Users { get; init; }
 
-    public DbSet<TodoItem> TodoItems { get; set; }
-
+    /// <inheritdoc cref="DbContext" />
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
@@ -21,6 +21,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
         modelBuilder.HasDefaultSchema(Schemas.Default);
     }
 
+    /// <inheritdoc cref="DbContext" />
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         // When should you publish domain events?
