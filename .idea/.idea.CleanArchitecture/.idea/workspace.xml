@@ -12,8 +12,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="659da292-2561-48e9-9900-36a3c1e44b92" name="Changes" comment="chore(ide): update workspace settings and ignore JetBrains Rider files&#10;&#10;- Updated `workspace.xml` to replace special characters with HTML &#10;  entities for better XML compliance.&#10;- Modified `.gitignore` to include JetBrains Rider config while &#10;  excluding specific directories to maintain essential IDE settings.">
+    <list default="true" id="659da292-2561-48e9-9900-36a3c1e44b92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Directory.Build.props" beforeDir="false" afterPath="$PROJECT_DIR$/Directory.Build.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="dev" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/dev" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="dev" />
@@ -28,9 +62,31 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;bertusviljoen&quot;
+  }
+}</component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="e765e374-653b-40d1-87c1-ff13188da68b" />
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bertusviljoen/elevator-management-simulator.git&quot;,
+    &quot;accountId&quot;: &quot;e765e374-653b-40d1-87c1-ff13188da68b&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;bertusviljoen&quot;,
+    &quot;repository&quot;: &quot;elevator-management-simulator&quot;
+  }
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -40,21 +96,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Presentation.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/bertus__github__build",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Presentation.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#2 on feature/github__actions&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.Presentation">
     <configuration name="Presentation" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -170,7 +226,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733456687604</updated>
       <workItem from="1733456688820" duration="2287000" />
-      <workItem from="1733464019481" duration="1943000" />
+      <workItem from="1733464019481" duration="3414000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions.">
       <option name="closed" value="true" />
@@ -188,7 +244,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733465662666</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="chore(ide): update workspace settings and ignore JetBrains Rider files&#10;&#10;- Updated `workspace.xml` to replace special characters with HTML &#10;  entities for better XML compliance.&#10;- Modified `.gitignore` to include JetBrains Rider config while &#10;  excluding specific directories to maintain essential IDE settings.">
+      <option name="closed" value="true" />
+      <created>1733466139880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733466139880</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chore(github-actions): remove obsolete build-test workflow file&#10;&#10;Deleted the `.github/build-test.yaml` file as it is no longer needed &#10;for the CI/CD process. This cleanup reduces project clutter and &#10;maintains a streamlined configuration.">
+      <option name="closed" value="true" />
+      <created>1733466843072</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733466843072</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +279,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/bertus_github_build" />
+                        <option value="feature/github_actions" />
                       </list>
                     </value>
                   </entry>
@@ -223,6 +295,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="refactor(project): reorganize solution structure and remove unused files&#10;&#10;Deleted obsolete `.idea` files and the `Presentation.csproj` to clean up &#10;the project. Updated the solution file to reflect the new project &#10;structure, renaming it to `Elevator-Management-Simulator.sln` and &#10;adjusting project references in `ArchitectureTests.csproj` to point &#10;to the correct source projects. This improves project organization and &#10;maintains consistency in naming conventions." />
     <MESSAGE value="chore(ide): update workspace settings and ignore JetBrains Rider files&#10;&#10;- Updated `workspace.xml` to replace special characters with HTML &#10;  entities for better XML compliance.&#10;- Modified `.gitignore` to include JetBrains Rider config while &#10;  excluding specific directories to maintain essential IDE settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(ide): update workspace settings and ignore JetBrains Rider files&#10;&#10;- Updated `workspace.xml` to replace special characters with HTML &#10;  entities for better XML compliance.&#10;- Modified `.gitignore` to include JetBrains Rider config while &#10;  excluding specific directories to maintain essential IDE settings." />
+    <MESSAGE value="chore(github-actions): remove obsolete build-test workflow file&#10;&#10;Deleted the `.github/build-test.yaml` file as it is no longer needed &#10;for the CI/CD process. This cleanup reduces project clutter and &#10;maintains a streamlined configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(github-actions): remove obsolete build-test workflow file&#10;&#10;Deleted the `.github/build-test.yaml` file as it is no longer needed &#10;for the CI/CD process. This cleanup reduces project clutter and &#10;maintains a streamlined configuration." />
   </component>
 </project>
