@@ -4,10 +4,12 @@ using Application.Abstractions.Data;
 using Infrastructure.Authentication;
 using Infrastructure.Authorization;
 using Infrastructure.Database;
+using Infrastructure.Persistance.Interceptors;
 using Infrastructure.Time;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,11 +41,16 @@ public static class DependencyInjection
     {
         string? connectionString = configuration.GetConnectionString("Database");
 
+        //register interceptors
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        
         //use sqlite
         services.AddDbContext<ApplicationDbContext>(
             options => options
                 .UseSqlite(connectionString)
-                .UseSnakeCaseNamingConvention());
+                .UseSnakeCaseNamingConvention()
+                .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
+            );
 
         services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
