@@ -7,7 +7,8 @@ using SharedKernel;
 namespace Infrastructure.Database;
 
 /// <inheritdoc cref="IApplicationDbContext" />
-public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IPublisher publisher)
+public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
+    IPublisher publisher)
     : DbContext(options), IApplicationDbContext
 {
     /// <inheritdoc cref="IApplicationDbContext" />
