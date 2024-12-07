@@ -44,12 +44,6 @@ public static class DependencyInjection
             options => options
                 .UseSqlite(connectionString)
                 .UseSnakeCaseNamingConvention());
-        
-        // services.AddDbContext<ApplicationDbContext>(
-        //     options => options
-        //         .UseNpgsql(connectionString, npgsqlOptions =>
-        //             npgsqlOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Default))
-        //         .UseSnakeCaseNamingConvention());
 
         services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
 

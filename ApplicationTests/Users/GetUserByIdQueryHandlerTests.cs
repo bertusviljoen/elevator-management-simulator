@@ -1,5 +1,4 @@
 using Application.Abstractions.Authentication;
-using Application.Abstractions.Data;
 using Application.Users.GetById;
 using Domain.Users;
 using Infrastructure.Database;
