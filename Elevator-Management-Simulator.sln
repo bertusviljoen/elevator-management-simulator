@@ -6,10 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FC526EA-218B-4615-8410-4E1850611F38}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		Directory.Build.props = Directory.Build.props
-		README.md = README.md
-		.github\workflows\build-test.yaml = .github\workflows\build-test.yaml
 		.gitignore = .gitignore
+		.github\workflows\build-test.yaml = .github\workflows\build-test.yaml
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{64A28C1B-09AF-426E-8721-D002BE554B48}"
@@ -33,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationTests", "tests\ApplicationTests\ApplicationTests.csproj", "{D512C1FB-EEA1-4A64-8678-B12959F51EE2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureTests", "tests\InfrastructureTests\InfrastructureTests.csproj", "{D31CC13B-83C1-4049-97EC-A2275E9DCEA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{FBE26A94-8284-4449-BC37-84359EBE04C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,7 +84,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{166778A2-518F-47F0-BBC7-DB49C76A963C} = {64A28C1B-09AF-426E-8721-D002BE554B48}
 		{6448ADE8-34BC-4F2F-A68C-5B2D6BF4FB0B} = {64A28C1B-09AF-426E-8721-D002BE554B48}
 		{0F576D4A-156D-4626-A4D5-83DD0F6FAFE7} = {64A28C1B-09AF-426E-8721-D002BE554B48}
 		{C699FD09-4D82-4C4B-8744-4FD3B0D60EFC} = {64A28C1B-09AF-426E-8721-D002BE554B48}
@@ -90,6 +92,7 @@ Global
 		{CC90FD89-179C-48B0-A1DE-689BB734EF2F} = {64A28C1B-09AF-426E-8721-D002BE554B48}
 		{D512C1FB-EEA1-4A64-8678-B12959F51EE2} = {1EB88D85-BE1E-46DE-99A2-2F02363060AF}
 		{D31CC13B-83C1-4049-97EC-A2275E9DCEA4} = {1EB88D85-BE1E-46DE-99A2-2F02363060AF}
+		{166778A2-518F-47F0-BBC7-DB49C76A963C} = {FBE26A94-8284-4449-BC37-84359EBE04C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B948A3CC-9872-4612-ABD2-BB3D49671542}
