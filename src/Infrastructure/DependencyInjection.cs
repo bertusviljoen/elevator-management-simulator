@@ -4,10 +4,12 @@ using Application.Abstractions.Data;
 using Infrastructure.Authentication;
 using Infrastructure.Authorization;
 using Infrastructure.Database;
+using Infrastructure.Persistance.Interceptors;
 using Infrastructure.Time;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,10 +22,11 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
-        IConfiguration configuration) =>
+        IConfiguration configuration,
+        bool useInMemoryDatabase = false) =>
         services
             .AddServices()
-            .AddDatabase(configuration)
+            .AddDatabase(configuration, useInMemoryDatabase)
             .AddHealthChecks(configuration)
             .AddAuthenticationInternal(configuration)
             .AddAuthorizationInternal();
@@ -35,15 +38,30 @@ public static class DependencyInjection
         return services;
     }
 
-    private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+    private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration, bool useInMemoryDatabase)
     {
-        string? connectionString = configuration.GetConnectionString("Database");
+        //register interceptors
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-        //use sqlite
-        services.AddDbContext<ApplicationDbContext>(
-            options => options
-                .UseSqlite(connectionString)
-                .UseSnakeCaseNamingConvention());
+        if (useInMemoryDatabase)
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options
+                    .UseInMemoryDatabase("TestDatabase")
+                    .UseSnakeCaseNamingConvention()
+                    .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
+                    .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning)));
+        }
+        else
+        {
+            string? connectionString = configuration.GetConnectionString("Database");
+            services.AddDbContext<ApplicationDbContext>(
+                options => options
+                    .UseSqlite(connectionString)
+                    .UseSnakeCaseNamingConvention()
+                    .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
+                );
+        }
 
         services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
@@ -52,9 +70,12 @@ public static class DependencyInjection
 
     private static IServiceCollection AddHealthChecks(this IServiceCollection services, IConfiguration configuration)
     {
-        services
-            .AddHealthChecks()
-            .AddSqlite(configuration.GetConnectionString("Database")!);
+        if (configuration.GetConnectionString("Database") != null)
+        {
+            services
+                .AddHealthChecks()
+                .AddSqlite(configuration.GetConnectionString("Database")!);
+        }
 
         return services;
     }

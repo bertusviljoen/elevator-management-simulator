@@ -12,8 +12,6 @@ namespace ApplicationTests.Users;
 public class GetUserByIdQueryHandlerTests
 {
     private readonly DbContextOptions<ApplicationDbContext> _options;
-    private readonly IUserContext _userContext;
-    private readonly IPublisher _publisher;
 
     public GetUserByIdQueryHandlerTests()
     {
@@ -21,16 +19,10 @@ public class GetUserByIdQueryHandlerTests
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
 
-        var userContextMock = new Mock<IUserContext>();
-        userContextMock.SetupGet(x => x.UserId)
-            .Returns(Guid.NewGuid());
-        _userContext = userContextMock.Object;
-
         var publisherMock = new Mock<IPublisher>();
         publisherMock.Setup(x => x.Publish(It.IsAny<INotification>(), 
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-        _publisher = publisherMock.Object;
     }
 
     [Fact]
@@ -41,7 +33,7 @@ public class GetUserByIdQueryHandlerTests
         var currentUserId = Guid.NewGuid();
         var query = new GetUserByIdQuery(searchUserId);
 
-        await using var context = new ApplicationDbContext(_options, _publisher);
+        await using var context = new ApplicationDbContext(_options);
         await context.Users.AddAsync(new User
         {
             Id = currentUserId,
