@@ -20,7 +20,7 @@ public class EntityEventTriggerTests
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddApplication();
-                services.AddInfrastructure(hostContext.Configuration);
+                services.AddInfrastructure(hostContext.Configuration, true);
             })
             .Build();
         
@@ -38,12 +38,11 @@ public class EntityEventTriggerTests
 
         user.Raise(new UserRegisteredDomainEvent(user.Id));
 
-        context.Users.Add(user);
-
+        await context.Users.AddAsync(user);
         await context.SaveChangesAsync(CancellationToken.None);
         
         //Check if interceptor is triggered
-        Assert.True(user.DomainEvents.Any());
+        Assert.False(user.DomainEvents.Any());
         
     }
 }
