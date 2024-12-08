@@ -29,6 +29,8 @@ public static class Program
             })
             .Build();
 
+        await host.RunMigrationsAsync();
+        
         // Run the host (this will call StartAsync on IHostedService implementations)
         await host.RunAsync();
     }

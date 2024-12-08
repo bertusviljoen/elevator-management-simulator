@@ -28,8 +28,6 @@ public class App(IServiceProvider serviceProvider) : IHostedService
                     await registerScreen.ShowAsync(cancellationToken);
                     break;
                 case MenuSelection.Login:
-                    // var loginScreen = serviceProvider.GetRequiredService<LoginScreen>();
-                    // await loginScreen.ShowAsync(cancellationToken);
                     break;
             }
             
