@@ -1,4 +1,4 @@
-namespace SharedKernel;
+namespace Domain.Common;
 
 /// <summary> Describes database entities that tracks timestamps when data is modified. </summary>
 public interface ITimeAuditedEntity

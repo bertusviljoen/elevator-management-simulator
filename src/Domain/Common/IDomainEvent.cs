@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace SharedKernel;
+namespace Domain.Common;
 
 public interface IDomainEvent : INotification;

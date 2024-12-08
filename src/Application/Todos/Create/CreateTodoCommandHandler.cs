@@ -4,7 +4,7 @@ using Application.Abstractions.Messaging;
 using Domain.Todos;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
-using SharedKernel;
+using Domain.Common;
 
 namespace Application.Todos.Create;
 

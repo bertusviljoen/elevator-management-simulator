@@ -5,7 +5,7 @@ using Infrastructure.Database;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using SharedKernel;
+using Domain.Common;
 
 namespace ApplicationTests.Users;
 

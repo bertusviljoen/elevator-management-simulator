@@ -3,7 +3,7 @@ using Application.Users.Register;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Presentation.Extensions;
-using SharedKernel;
+using Domain.Common;
 using Spectre.Console;
 
 namespace Presentation.Screens;

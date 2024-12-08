@@ -2,7 +2,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using SharedKernel;
+using Domain.Common;
 
 namespace Application.Abstractions.Behaviors;
 
