@@ -18,6 +18,7 @@ public static class DependencyInjections
     {
          services.AddTransient<MenuScreen>();
          services.AddTransient<RegisterScreen>();
+         services.AddTransient<LoginScreen>();
          return services;
     }
     

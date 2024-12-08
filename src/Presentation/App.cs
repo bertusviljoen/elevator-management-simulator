@@ -28,6 +28,16 @@ public class App(IServiceProvider serviceProvider) : IHostedService
                     await registerScreen.ShowAsync(cancellationToken);
                     break;
                 case MenuSelection.Login:
+                    var loginScreen = serviceProvider.GetRequiredService<LoginScreen>();
+                    var loginResult = await loginScreen.ShowAsync(cancellationToken);
+                    if (loginResult.IsSuccess)
+                    {
+                        AnsiConsole.MarkupLine($"[green]Login successful[/]");
+                    }
+                    else
+                    {
+                        AnsiConsole.MarkupLine($"[red]Login failed[/]");
+                    }
                     break;
             }
             
