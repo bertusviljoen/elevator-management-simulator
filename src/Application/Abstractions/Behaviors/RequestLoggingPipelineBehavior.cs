@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
-using SharedKernel;
+using Domain.Common;
 
 namespace Application.Abstractions.Behaviors;
 

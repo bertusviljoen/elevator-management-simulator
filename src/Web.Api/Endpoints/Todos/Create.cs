@@ -1,7 +1,7 @@
 ﻿using Application.Todos.Create;
 using Domain.Todos;
 using MediatR;
-using SharedKernel;
+using Domain.Common;
 using Web.Api.Extensions;
 using Web.Api.Infrastructure;
 

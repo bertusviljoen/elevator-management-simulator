@@ -1,6 +1,6 @@
 ﻿using Application.Users.Login;
 using MediatR;
-using SharedKernel;
+using Domain.Common;
 using Web.Api.Extensions;
 using Web.Api.Infrastructure;
 

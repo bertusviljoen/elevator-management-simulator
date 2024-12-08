@@ -1,4 +1,4 @@
-namespace SharedKernel;
+namespace Domain.Common;
 
 /// <summary> Describes database entities that tracks users that modify data. </summary>
 public interface IUserAuditedEntity

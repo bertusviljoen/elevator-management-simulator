@@ -2,7 +2,7 @@
 using Domain.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SharedKernel;
+using Domain.Common;
 
 namespace Infrastructure.Database;
 

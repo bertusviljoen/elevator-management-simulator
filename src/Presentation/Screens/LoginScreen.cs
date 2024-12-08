@@ -2,7 +2,7 @@ using Application.Abstractions.Screen;
 using Application.Users.Login;
 using MediatR;
 using Presentation.Extensions;
-using SharedKernel;
+using Domain.Common;
 using Spectre.Console;
 
 namespace Presentation.Screens;

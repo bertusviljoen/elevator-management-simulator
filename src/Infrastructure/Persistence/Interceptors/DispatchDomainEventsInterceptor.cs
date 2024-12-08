@@ -2,7 +2,7 @@ using System.Diagnostics;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using SharedKernel;
+using Domain.Common;
 
 namespace Infrastructure.Persistance.Interceptors;
 

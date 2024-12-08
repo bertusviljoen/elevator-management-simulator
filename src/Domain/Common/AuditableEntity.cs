@@ -1,4 +1,4 @@
-namespace SharedKernel;
+namespace Domain.Common;
 
 /// <summary> Base abstract class for entities that have audit and timestamp tracking. </summary>
 public abstract class AuditableEntity 

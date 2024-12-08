@@ -1,4 +1,4 @@
-﻿namespace SharedKernel;
+﻿namespace Domain.Common;
 
 /// <summary> Base abstract class for entities which have domain events. </summary>
 public abstract class Entity
