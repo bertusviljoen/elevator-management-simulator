@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241208114422_SeedDataUser")]
+    partial class SeedDataUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,16 +69,6 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("ix_buildings_updated_by_user_id");
 
                     b.ToTable("buildings", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Joe's Building",
-                            NumberOfFloors = 10
-                        });
                 });
 
             modelBuilder.Entity("Domain.Elevators.Elevator", b =>
@@ -133,98 +126,18 @@ namespace Infrastructure.Migrations
                         .HasColumnName("updated_date_time_utc");
 
                     b.HasKey("Id")
-                        .HasName("pk_elevators");
+                        .HasName("pk_elevator");
 
                     b.HasIndex("BuildingId")
-                        .HasDatabaseName("ix_elevators_building_id");
+                        .HasDatabaseName("ix_elevator_building_id");
 
                     b.HasIndex("CreatedByUserId")
-                        .HasDatabaseName("ix_elevators_created_by_user_id");
+                        .HasDatabaseName("ix_elevator_created_by_user_id");
 
                     b.HasIndex("UpdatedByUserId")
-                        .HasDatabaseName("ix_elevators_updated_by_user_id");
+                        .HasDatabaseName("ix_elevator_updated_by_user_id");
 
-                    b.ToTable("elevators", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("852bb6fa-1831-49ef-a0d9-5bfa5f567841"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("14ef29a8-001e-4b70-93b6-bfdb00237d46"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("966b1041-ff39-432b-917c-b0a14ddce0bd"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("b8557436-6472-4ad7-b111-09c8a023c463"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("bbfbdffa-f7cd-4241-a222-85a733098782"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Service",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("82d562f7-f7d5-4088-b735-9a7b085968d3"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 5,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "HighSpeed",
-                            Speed = 1.0
-                        });
+                    b.ToTable("elevator", "dbo");
                 });
 
             modelBuilder.Entity("Domain.Users.User", b =>
@@ -270,7 +183,7 @@ namespace Infrastructure.Migrations
                             Email = "admin@buiding.com",
                             FirstName = "Admin",
                             LastName = "Joe",
-                            PasswordHash = "55BC042899399B562DD4A363FD250A9014C045B900716FCDC074861EB69C344A-B44367BE2D0B037E31AEEE2649199100"
+                            PasswordHash = "530CDAF49C27B049D32949948AC28BB6DAAD98B1C48C971284B32DC83B1DB196-F03C1CB1D5D328F210451652459070FA"
                         });
                 });
 
@@ -301,19 +214,19 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("BuildingId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_elevators_buildings_building_id");
+                        .HasConstraintName("fk_elevator_buildings_building_id");
 
                     b.HasOne("Domain.Users.User", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_elevators_users_created_by_user_id");
+                        .HasConstraintName("fk_elevator_users_created_by_user_id");
 
                     b.HasOne("Domain.Users.User", "UpdatedByUser")
                         .WithMany()
                         .HasForeignKey("UpdatedByUserId")
-                        .HasConstraintName("fk_elevators_users_updated_by_user_id");
+                        .HasConstraintName("fk_elevator_users_updated_by_user_id");
 
                     b.Navigation("Building");
 

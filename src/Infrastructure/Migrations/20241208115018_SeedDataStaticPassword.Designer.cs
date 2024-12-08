@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241208115018_SeedDataStaticPassword")]
+    partial class SeedDataStaticPassword
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,86 +148,6 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("ix_elevators_updated_by_user_id");
 
                     b.ToTable("elevators", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("852bb6fa-1831-49ef-a0d9-5bfa5f567841"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("14ef29a8-001e-4b70-93b6-bfdb00237d46"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("966b1041-ff39-432b-917c-b0a14ddce0bd"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("b8557436-6472-4ad7-b111-09c8a023c463"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("bbfbdffa-f7cd-4241-a222-85a733098782"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Service",
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("82d562f7-f7d5-4088-b735-9a7b085968d3"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 5,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "HighSpeed",
-                            Speed = 1.0
-                        });
                 });
 
             modelBuilder.Entity("Domain.Users.User", b =>
