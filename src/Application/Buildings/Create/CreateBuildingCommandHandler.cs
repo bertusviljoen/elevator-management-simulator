@@ -5,7 +5,7 @@ using Domain.Buildings;
 using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Building.Create;
+namespace Application.Buildings.Create;
 
 public sealed class CreateBuildingCommandHandler(
     IApplicationDbContext applicationDbContext,

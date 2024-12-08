@@ -1,5 +1,5 @@
 using Application;
-using Application.Building.Create;
+using Application.Buildings.Create;
 using Domain.Buildings;
 using Infrastructure;
 using Infrastructure.Persistence.Database;

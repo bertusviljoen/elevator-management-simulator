@@ -1,11 +1,11 @@
 using FluentValidation;
 
-namespace Application.Building.Create;
+namespace Application.Buildings.Create;
 
-internal sealed class CreateBuildingCommandHandlerValidator
+internal sealed class CreateBuildingCommandValidator
     : AbstractValidator<CreateBuildingCommand>
 {
-    public CreateBuildingCommandHandlerValidator()
+    public CreateBuildingCommandValidator()
     {
         RuleFor(x => x.Name)
             .NotEmpty()
