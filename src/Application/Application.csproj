@@ -22,8 +22,4 @@
 	<InternalsVisibleTo Include="Application.UnitTests" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Building\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Database;
+using Infrastructure.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Web.Api.Extensions;

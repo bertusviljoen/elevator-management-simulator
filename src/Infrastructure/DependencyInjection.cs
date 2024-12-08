@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Domain.Common;
+using Infrastructure.Persistence.Database;
 
 namespace Infrastructure;
 
@@ -47,10 +48,11 @@ public static class DependencyInjection
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
-                    .UseInMemoryDatabase("TestDatabase")
+                    .UseInMemoryDatabase(Guid.NewGuid().ToString())
                     .UseSnakeCaseNamingConvention()
                     .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
-                    .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning)));
+                    .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
+                );
         }
         else
         {
