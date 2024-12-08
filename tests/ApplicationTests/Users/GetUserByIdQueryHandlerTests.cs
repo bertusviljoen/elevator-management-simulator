@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Domain.Common;
+using Infrastructure.Persistence.Database;
 
 namespace ApplicationTests.Users;
 

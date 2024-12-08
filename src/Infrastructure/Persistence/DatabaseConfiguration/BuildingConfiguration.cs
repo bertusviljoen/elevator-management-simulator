@@ -1,8 +1,8 @@
-using Domain.Entities;
+using Domain.Buildings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Users;
+namespace Infrastructure.Persistence.DatabaseConfiguration;
 
 internal sealed class BuildingConfiguration : IEntityTypeConfiguration<Building>
 {
@@ -28,6 +28,5 @@ internal sealed class BuildingConfiguration : IEntityTypeConfiguration<Building>
             .WithMany()
             .HasForeignKey(b => b.UpdatedByUserId)
             .OnDelete(DeleteBehavior.Restrict);
-        
     }
 }

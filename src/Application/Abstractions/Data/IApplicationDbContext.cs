@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using Domain.Users;
+﻿using Domain.Users;
+using Domain.Buildings;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Abstractions.Data;
@@ -11,7 +11,7 @@ public interface IApplicationDbContext
     DbSet<User> Users { get; }
     
     /// <summary> Get the DbSet of Building entities. </summary>
-    DbSet<Building> Buildings { get; }
+    DbSet<Domain.Buildings.Building> Buildings { get; }
     /// <summary> Save the changes to the database. </summary>
     /// <param name="cancellationToken"> The cancellation token. </param>
     /// <returns> The number of state entries written to the database. </returns>

@@ -1,11 +1,10 @@
 ﻿using Application.Abstractions.Data;
+using Domain.Buildings;
 using Domain.Users;
-using MediatR;
+using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
-using Domain.Common;
-using Domain.Entities;
 
-namespace Infrastructure.Database;
+namespace Infrastructure.Persistence.Database;
 
 /// <inheritdoc cref="IApplicationDbContext" />
 public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):

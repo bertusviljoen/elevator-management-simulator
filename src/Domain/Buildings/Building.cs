@@ -1,9 +1,9 @@
 using Domain.Common;
 
-namespace Domain.Entities;
+namespace Domain.Buildings;
 
 /// <summary> Entity representing a building. </summary>
-public class Building : AuditableEntity
+public sealed class Building : AuditableEntity
 {
     /// <summary> Get or set the unique identifier for the building. </summary>
     public required Guid Id { get; init; }

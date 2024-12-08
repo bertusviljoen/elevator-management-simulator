@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Users;
+namespace Infrastructure.Persistence.DatabaseConfiguration;
 
 /// <summary> The user entity configuration for the database. </summary>
 internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
