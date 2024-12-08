@@ -50,7 +50,8 @@ public static class DependencyInjection
                     .UseInMemoryDatabase(Guid.NewGuid().ToString())
                     .UseSnakeCaseNamingConvention()
                     .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
-                    .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning)));
+                    .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
+                );
         }
         else
         {
