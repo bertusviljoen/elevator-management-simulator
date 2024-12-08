@@ -21,7 +21,7 @@ public class BuildingTests
             {
                 services.AddApplication();
                 services.AddInfrastructure(hostContext.Configuration,
-                    false);
+                    true);
             })
             .Build();
         
