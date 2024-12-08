@@ -1,6 +1,6 @@
 using Domain.Common;
 
-namespace Domain.Users;
+namespace Domain.Entities;
 
 /// <summary> Entity representing a building. </summary>
 public class Building : AuditableEntity

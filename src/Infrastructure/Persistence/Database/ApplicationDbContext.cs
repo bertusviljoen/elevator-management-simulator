@@ -3,6 +3,7 @@ using Domain.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Domain.Common;
+using Domain.Entities;
 
 namespace Infrastructure.Database;
 
@@ -12,6 +13,8 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
 {
     /// <inheritdoc cref="IApplicationDbContext" />
     public DbSet<User> Users { get; init; }
+    /// <inheritdoc cref="IApplicationDbContext" />
+    public DbSet<Building> Buildings { get; init; }
 
     /// <inheritdoc cref="DbContext" />
     protected override void OnModelCreating(ModelBuilder modelBuilder)

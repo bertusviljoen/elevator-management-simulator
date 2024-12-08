@@ -47,7 +47,7 @@ public static class DependencyInjection
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
-                    .UseInMemoryDatabase("TestDatabase")
+                    .UseInMemoryDatabase(Guid.NewGuid().ToString())
                     .UseSnakeCaseNamingConvention()
                     .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
                     .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning)));
