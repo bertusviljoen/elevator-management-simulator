@@ -32,7 +32,7 @@ public class RegisterScreen(IMediator mediator) : IScreen<bool>
             await AnsiConsole.Status()
                 .StartAsync("Thinking...", async ctx => 
                 {
-                    var registerNewUserCommand = new RegisterUserCommand(name, surname, email, password);
+                    var registerNewUserCommand = new RegisterUserCommand(email, name, surname, password);
                     registrationResult =  await mediator.Send(registerNewUserCommand, token);
                    
                 });
@@ -56,53 +56,10 @@ public class RegisterScreen(IMediator mediator) : IScreen<bool>
     
     private string GetErrorMessage(Result error)
     {
-        
-        if (error.Error is not ValidationError validationError)
+        if (error.Error is ValidationError validationError)
         {
-            return "null";
+            return string.Join(", ", validationError.Errors.Select(e => e.Description));
         }
-
-        return string.Join(", ", validationError.Errors.Select(e => e.Description));
-        
-        
-         static string GetTitle(Error error) =>
-            error.Type switch
-            {
-                ErrorType.Validation => error.Code,
-                ErrorType.Problem => error.Code,
-                ErrorType.NotFound => error.Code,
-                ErrorType.Conflict => error.Code,
-                _ => "Server failure"
-            };
-
-        static string GetDetail(Error error) =>
-            error.Type switch
-            {
-                ErrorType.Validation => error.Description,
-                ErrorType.Problem => error.Description,
-                ErrorType.NotFound => error.Description,
-                ErrorType.Conflict => error.Description,
-                _ => "An unexpected error occurred"
-            };
-
-        static string GetType(ErrorType errorType) =>
-            errorType switch
-            {
-                ErrorType.Validation => "https://tools.ietf.org/html/rfc7231#section-6.5.1",
-                ErrorType.Problem => "https://tools.ietf.org/html/rfc7231#section-6.5.1",
-                ErrorType.NotFound => "https://tools.ietf.org/html/rfc7231#section-6.5.4",
-                ErrorType.Conflict => "https://tools.ietf.org/html/rfc7231#section-6.5.8",
-                _ => "https://tools.ietf.org/html/rfc7231#section-6.6.1"
-            };
-
-        static int GetStatusCode(ErrorType errorType) =>
-            errorType switch
-            {
-                ErrorType.Validation => StatusCodes.Status400BadRequest,
-                ErrorType.NotFound => StatusCodes.Status404NotFound,
-                ErrorType.Conflict => StatusCodes.Status409Conflict,
-                _ => StatusCodes.Status500InternalServerError
-            };
-        
+        return error.Error.Description;
     }
 }
