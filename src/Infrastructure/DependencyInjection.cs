@@ -29,7 +29,7 @@ public static class DependencyInjection
             .AddDatabase(configuration, useInMemoryDatabase)
             .AddHealthChecks(configuration)
             .AddAuthenticationInternal(configuration)
-            .AddAuthorizationInternal();
+        ;
 
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
