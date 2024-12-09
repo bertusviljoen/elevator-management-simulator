@@ -13,6 +13,15 @@ public class Elevator : AuditableEntity
     public required int Number { get; set; }
     /// <summary> Get or set the current floor the elevator is on. </summary>
     public required int CurrentFloor { get; set; }
+
+    /// <summary> Get or set the destination floor the elevator is moving to. </summary>
+    public int DestinationFloor { get; set; } = 0;
+
+    /// <summary> Get or set the destination floors the elevator is moving to. </summary>
+    public string DestinationFloors { get; set; } = string.Empty;
+    /// <summary> Get or set the status of the elevator door. </summary>
+    public ElevatorDoorStatus DoorStatus { get; set; }
+    
     /// <summary> Get or set the direction the elevator is moving. </summary>
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public required ElevatorDirection ElevatorDirection { get; set; }
@@ -23,9 +32,9 @@ public class Elevator : AuditableEntity
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public required ElevatorType ElevatorType { get; set; }
     /// <summary> Get or set the speed of the elevator. </summary>
-    public double Speed { get; set; } = 0.5;
+    public int FloorsPerSecond { get; set; } = 1;
     /// <summary> Get or set the capacity of the elevator. </summary>
-    public int Capacity { get; set; } = 10;
+    public int PersonCapacity { get; set; } = 10;
     /// <summary> Get or set the unique identifier of the building the elevator is in. </summary>
     public required Guid BuildingId { get; set; }
     /// <summary> Get or set the building the elevator is in. </summary>

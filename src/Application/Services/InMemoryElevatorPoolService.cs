@@ -99,6 +99,9 @@ public sealed class InMemoryElevatorPoolService(
                             dbElevator.CurrentFloor = elevator.CurrentFloor;
                             dbElevator.ElevatorStatus = elevator.ElevatorStatus;
                             dbElevator.ElevatorDirection = elevator.ElevatorDirection;
+                            dbElevator.DoorStatus = elevator.DoorStatus;
+                            dbElevator.DestinationFloor = elevator.DestinationFloor;
+                            dbElevator.DestinationFloors = elevator.DestinationFloors.Count > 0 ? string.Join(",", elevator.DestinationFloors.ToList()) : "";
                             await context.SaveChangesAsync(cancellationToken);
                         }
 

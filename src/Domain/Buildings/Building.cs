@@ -11,4 +11,7 @@ public sealed class Building : AuditableEntity
     public required string Name { get; set; }
     /// <summary> Get or set the number of floors in the building. </summary>
     public required int NumberOfFloors { get; set; }
+
+    /// <summary> Get or set if this building is the default building. </summary>
+    public bool IsDefault { get; set; } = true;
 }

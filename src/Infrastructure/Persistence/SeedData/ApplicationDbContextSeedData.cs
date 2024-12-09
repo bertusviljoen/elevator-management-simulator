@@ -53,9 +53,10 @@ public static class ApplicationDbContextSeedData
                 Number = 1,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
-                ElevatorType = ElevatorType.Passenger,
+                ElevatorType = ElevatorType.HighSpeed,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
-                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id,
+                FloorsPerSecond = 5
             },
             new()
             {
@@ -85,7 +86,7 @@ public static class ApplicationDbContextSeedData
                 CurrentFloor = 1,
                 Number = 4,
                 ElevatorDirection = ElevatorDirection.None,
-                ElevatorStatus = ElevatorStatus.Active,
+                ElevatorStatus = ElevatorStatus.Maintenance,
                 ElevatorType = ElevatorType.Passenger,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
                 CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
@@ -96,7 +97,7 @@ public static class ApplicationDbContextSeedData
                 CurrentFloor = 1,
                 Number = 5,
                 ElevatorDirection = ElevatorDirection.None,
-                ElevatorStatus = ElevatorStatus.Active,
+                ElevatorStatus = ElevatorStatus.OutOfService,
                 ElevatorType = ElevatorType.Passenger,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
                 CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id

@@ -36,10 +36,10 @@ public class ElevatorItem
     public ElevatorType ElevatorType { get; set; }
 
     /// <summary> Get or set the speed of the elevator. </summary>
-    public double Speed { get; set; } = 0.5;
+    public int FloorsPerSecond { get; set; } = 1;
 
     /// <summary> Get or set the capacity of the elevator. </summary>
-    public int Capacity { get; set; } = 10;
+    public int PersonCapacity { get; set; } = 10;
 
     /// <summary> Get or set the unique identifier of the building the elevator is in. </summary>
     public Guid BuildingId { get; set; }
@@ -52,23 +52,14 @@ public class ElevatorItem
         ElevatorDirection = elevator.ElevatorDirection,
         ElevatorStatus = elevator.ElevatorStatus,
         ElevatorType = elevator.ElevatorType,
-        Speed = elevator.Speed,
-        Capacity = elevator.Capacity,
-        BuildingId = elevator.BuildingId
+        FloorsPerSecond = elevator.FloorsPerSecond,
+        PersonCapacity = elevator.PersonCapacity,
+        BuildingId = elevator.BuildingId,
+        DestinationFloor = elevator.DestinationFloor,
+        DestinationFloors = new Queue<int>(string.IsNullOrWhiteSpace(elevator.DestinationFloors) ? new int[0] : elevator.DestinationFloors.Split(',').Select(int.Parse)),
+        DoorStatus = elevator.DoorStatus
     };
-
-    public Elevator ToElevator() => new()
-    {
-        Id = Id,
-        Number = Number,
-        CurrentFloor = CurrentFloor,
-        ElevatorDirection = ElevatorDirection,
-        ElevatorStatus = ElevatorStatus,
-        ElevatorType = ElevatorType,
-        Speed = Speed,
-        Capacity = Capacity,
-        BuildingId = BuildingId
-    };
+    
 
     /// <summary> Creates a deep copy of the elevator item. </summary>
     public ElevatorItem Clone() => new()
@@ -79,10 +70,11 @@ public class ElevatorItem
         ElevatorDirection = ElevatorDirection,
         ElevatorStatus = ElevatorStatus,
         ElevatorType = ElevatorType,
-        Speed = Speed,
-        Capacity = Capacity,
+        FloorsPerSecond = FloorsPerSecond,
+        PersonCapacity = PersonCapacity,
         BuildingId = BuildingId,
         DestinationFloor = DestinationFloor,
-        DestinationFloors = new Queue<int>(DestinationFloors)
+        DestinationFloors = new Queue<int>(DestinationFloors),
+        DoorStatus = DoorStatus
     };
 }

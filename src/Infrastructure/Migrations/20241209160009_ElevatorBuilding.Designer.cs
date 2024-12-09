@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241209160009_ElevatorBuilding")]
+    partial class ElevatorBuilding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,8 +137,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("elevator_type");
 
-                    b.Property<int>("FloorsPerSecond")
-                        .HasColumnType("INTEGER")
+                    b.Property<double>("FloorsPerSecond")
+                        .HasColumnType("REAL")
                         .HasColumnName("floors_per_second");
 
                     b.Property<int>("Number")
@@ -182,8 +185,8 @@ namespace Infrastructure.Migrations
                             DoorStatus = 0,
                             ElevatorDirection = "None",
                             ElevatorStatus = "Active",
-                            ElevatorType = "HighSpeed",
-                            FloorsPerSecond = 5,
+                            ElevatorType = "Passenger",
+                            FloorsPerSecond = 1.0,
                             Number = 1,
                             PersonCapacity = 10
                         },
@@ -200,7 +203,7 @@ namespace Infrastructure.Migrations
                             ElevatorDirection = "None",
                             ElevatorStatus = "Active",
                             ElevatorType = "Passenger",
-                            FloorsPerSecond = 1,
+                            FloorsPerSecond = 1.0,
                             Number = 2,
                             PersonCapacity = 10
                         },
@@ -217,7 +220,7 @@ namespace Infrastructure.Migrations
                             ElevatorDirection = "None",
                             ElevatorStatus = "Active",
                             ElevatorType = "Passenger",
-                            FloorsPerSecond = 1,
+                            FloorsPerSecond = 1.0,
                             Number = 3,
                             PersonCapacity = 10
                         },
@@ -232,9 +235,9 @@ namespace Infrastructure.Migrations
                             DestinationFloors = "",
                             DoorStatus = 0,
                             ElevatorDirection = "None",
-                            ElevatorStatus = "Maintenance",
+                            ElevatorStatus = "Active",
                             ElevatorType = "Passenger",
-                            FloorsPerSecond = 1,
+                            FloorsPerSecond = 1.0,
                             Number = 4,
                             PersonCapacity = 10
                         },
@@ -249,9 +252,9 @@ namespace Infrastructure.Migrations
                             DestinationFloors = "",
                             DoorStatus = 0,
                             ElevatorDirection = "None",
-                            ElevatorStatus = "OutOfService",
+                            ElevatorStatus = "Active",
                             ElevatorType = "Passenger",
-                            FloorsPerSecond = 1,
+                            FloorsPerSecond = 1.0,
                             Number = 5,
                             PersonCapacity = 10
                         });
