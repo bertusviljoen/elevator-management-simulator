@@ -9,6 +9,13 @@ internal sealed class ElevatorConfiguration : IEntityTypeConfiguration<Elevator>
     public void Configure(EntityTypeBuilder<Elevator> builder)
     {
         builder.HasKey(e => e.Id);
+        
+        builder.Property(e => e.Number)
+            .IsRequired();
+        
+        //HasIndex to be unique across building id and number
+        builder.HasIndex(e => new { e.BuildingId, e.Number })
+            .IsUnique();
 
         builder.Property(e => e.CurrentFloor)
             .IsRequired();

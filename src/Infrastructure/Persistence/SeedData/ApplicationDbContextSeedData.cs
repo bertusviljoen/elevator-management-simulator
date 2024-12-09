@@ -51,6 +51,7 @@ public static class ApplicationDbContextSeedData
             {
                 Id = Guid.Parse("852bb6fa-1831-49ef-a0d9-5bfa5f567841"),
                 CurrentFloor = 1,
+                Number = 1,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
@@ -61,6 +62,7 @@ public static class ApplicationDbContextSeedData
             {
                 Id = Guid.Parse("14ef29a8-001e-4b70-93b6-bfdb00237d46"),
                 CurrentFloor = 1,
+                Number = 2,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
@@ -71,6 +73,7 @@ public static class ApplicationDbContextSeedData
             {
                 Id = Guid.Parse("966b1041-ff39-432b-917c-b0a14ddce0bd"),
                 CurrentFloor = 1,
+                Number = 3,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
@@ -81,6 +84,7 @@ public static class ApplicationDbContextSeedData
             {
                 Id = Guid.Parse("b8557436-6472-4ad7-b111-09c8a023c463"),
                 CurrentFloor = 1,
+                Number = 4,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
@@ -91,6 +95,7 @@ public static class ApplicationDbContextSeedData
             {
                 Id = Guid.Parse("bbfbdffa-f7cd-4241-a222-85a733098782"),
                 CurrentFloor = 1,
+                Number = 5,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Service,
@@ -101,6 +106,7 @@ public static class ApplicationDbContextSeedData
             {
                 Id = Guid.Parse("82d562f7-f7d5-4088-b735-9a7b085968d3"),
                 CurrentFloor = 1,
+                Number = 6,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.HighSpeed,
