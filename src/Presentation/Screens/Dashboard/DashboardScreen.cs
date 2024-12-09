@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Application.Abstractions.Screen;
 using Application.Abstractions.Services;
 using Application.Services;
@@ -33,7 +34,11 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                 }
             }
         });
-
+        
+        
+        var buildingId = ApplicationDbContextSeedData.GetSeedBuildings().First()!.Id;
+        Result<IEnumerable<ElevatorItem>> result = null;
+        var stopWatch = new Stopwatch();
         try
         {
             while (!cts.Token.IsCancellationRequested)
@@ -44,9 +49,7 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                         .Color(Color.Blue)
                 );
 
-                var reload = true;
-                var buildingId = ApplicationDbContextSeedData.GetSeedBuildings().First()!.Id;
-                Result<IEnumerable<ElevatorItem>> result = null;
+                stopWatch.Restart();
                 await AnsiConsole.Status()
                     .StartAsync("Retrieving configured elevators...", async ctx =>
                     {
@@ -54,6 +57,7 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                         result =
                             await elevatorPoolService.GetAllElevatorsAsync(buildingId, token);
                     });
+                stopWatch.Stop();
 
                 _ = result?.Match(
                     onSuccess: elevators =>
@@ -61,8 +65,11 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                         var table = new Table();
                         table.AddColumn("Elevator Number");
                         table.AddColumn("Current Floor");
+                        table.AddColumn("Destination Floor");
+                        table.AddColumn("Queue");
                         table.AddColumn("Direction");
                         table.AddColumn("Status");
+                        table.AddColumn("Door Status");
                         table.AddColumn("Type");
                         table.AddColumn("Speed");
                         table.AddColumn("Capacity");
@@ -71,14 +78,17 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                             table.AddRow(
                                 elevator.Number.ToString(),
                                 elevator.CurrentFloor.ToString(),
+                                elevator.DestinationFloor.ToString(),
+                                elevator.DestinationFloors.Count.ToString(),
                                 elevator.ElevatorDirection.ToString(),
                                 elevator.ElevatorStatus.ToString(),
+                                elevator.DoorStatus.ToString(),
                                 elevator.ElevatorType.ToString(),
                                 elevator.Speed.ToString(),
                                 elevator.Capacity.ToString());
                         }
 
-                        AnsiConsole.Render(table);
+                        AnsiConsole.Write(table);
                         return true;
                     },
                     onFailure: error =>
@@ -93,7 +103,8 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                         return false;
                     }) ?? false;
 
-                AnsiConsole.WriteLine("Press [green]C[/] to exit or press any key to pause the counter...");
+                AnsiConsole.WriteLine("Refresh took: " + stopWatch.ElapsedMilliseconds + "ms");
+                AnsiConsole.MarkupLine("Press [green]C[/] to exit ...");
                 await AnsiConsole.Status()
                     .StartAsync($"Refreshing elevators in 1 second.... {DateTime.UtcNow.ToLocalTime()}", async ctx =>
                     {

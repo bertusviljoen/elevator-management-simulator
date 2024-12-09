@@ -20,12 +20,14 @@ public sealed class InMemoryElevatorPoolService(
     private readonly ConcurrentDictionary<Guid, ElevatorItem> _elevators = new();
     private readonly SemaphoreSlim _semaphore = new(1, 1);
     private DateTime _lastUpdate = DateTime.MinValue; // Initialize to MinValue to force first update
-    private readonly TimeSpan _updateInterval = TimeSpan.FromSeconds(30);
+    private readonly TimeSpan _updateInterval = TimeSpan.FromSeconds(360);
     private bool _disposed;
+    private readonly Guid _instanceId = Guid.NewGuid(); 
 
     ///<inheritdoc cref="IInMemoryElevatorPoolService"/> 
     public async Task<Result<ElevatorItem>> GetElevatorByIdAsync(Guid elevatorId, CancellationToken cancellationToken)
     {
+        _logger.LogDebug("Instance ID: {InstanceId}", _instanceId);
         _logger.LogInformation("Getting elevator by ID {ElevatorId}", elevatorId);
         try
         {
@@ -68,6 +70,7 @@ public sealed class InMemoryElevatorPoolService(
     ///<inheritdoc cref="IInMemoryElevatorPoolService"/> 
     public async Task<Result> UpdateElevatorAsync(ElevatorItem elevator, CancellationToken cancellationToken)
     {
+        _logger.LogDebug("Instance ID: {InstanceId}", _instanceId);
         _logger.LogInformation("Updating elevator {ElevatorId}", elevator.Id);
         try
         {
@@ -133,6 +136,7 @@ public sealed class InMemoryElevatorPoolService(
     ///<inheritdoc cref="IInMemoryElevatorPoolService"/> 
     public async Task<Result<IEnumerable<ElevatorItem>>> GetAllElevatorsAsync(Guid buildingId, CancellationToken cancellationToken)
     {
+        _logger.LogDebug("Instance ID: {InstanceId}", _instanceId);
         _logger.LogInformation("Getting all elevators in building {BuildingId}", buildingId);
         try
         {
@@ -151,6 +155,7 @@ public sealed class InMemoryElevatorPoolService(
                     var context = scope.ServiceProvider.GetRequiredService<IApplicationDbContext>();
 
                     var elevators = await context.Elevators
+                        .AsNoTracking()
                         .Where(e => e.BuildingId == buildingId)
                         .ToListAsync(cancellationToken);
 

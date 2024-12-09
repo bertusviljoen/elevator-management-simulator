@@ -41,7 +41,7 @@ public class ElevatorSimulationHostedService(
                     {
                         return;
                     }
-
+                    
                     // Simulate elevator movement based on direction
                     // ToDo: Implement logic for elevator movement taking into account speed
                     switch (elevator.ElevatorDirection)
@@ -52,6 +52,23 @@ public class ElevatorSimulationHostedService(
                         case ElevatorDirection.Down:
                             elevator.CurrentFloor--;
                             break;
+                        case ElevatorDirection.None:
+                            {
+                                if (elevator.DestinationFloors.Count > 0)
+                                {
+                                    var destinationFloor = elevator.DestinationFloors.Dequeue();
+                                    elevator.ElevatorDirection = destinationFloor > elevator.CurrentFloor
+                                        ? ElevatorDirection.Up
+                                        : ElevatorDirection.Down;
+                                    elevator.DestinationFloor = destinationFloor;
+                                }
+                            }
+                        break;
+                    }
+
+                    if (elevator.CurrentFloor == elevator.DestinationFloor)
+                    {
+                        elevator.ElevatorDirection = ElevatorDirection.None;
                     }
 
                     // Update elevator state with new floor

@@ -16,6 +16,12 @@ public class ElevatorItem
     
     /// <summary> Get or set the destination floor the elevator is moving to. </summary>
     public int DestinationFloor { get; set; }
+    
+    /// <summary> Get or set the destination floors the elevator is moving to. </summary>
+    public Queue<int> DestinationFloors { get; set; } = new();
+    
+    /// <summary> Get or set the status of the elevator door. </summary>
+    public ElevatorDoorStatus DoorStatus { get; set; }
 
     /// <summary> Get or set the direction the elevator is moving. </summary>
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -75,6 +81,8 @@ public class ElevatorItem
         ElevatorType = ElevatorType,
         Speed = Speed,
         Capacity = Capacity,
-        BuildingId = BuildingId
+        BuildingId = BuildingId,
+        DestinationFloor = DestinationFloor,
+        DestinationFloors = new Queue<int>(DestinationFloors)
     };
 }

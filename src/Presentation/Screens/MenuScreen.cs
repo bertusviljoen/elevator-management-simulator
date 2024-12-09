@@ -12,6 +12,7 @@ public class MenuScreen : IScreen<MenuSelection>
     {
         ["Login"] = MenuSelection.Login,
         ["Dashboard"] = MenuSelection.Dashboard,
+        ["Elevator Control"] = MenuSelection.ElevatorControl,
         ["Exit"] = MenuSelection.Exit
         
     };

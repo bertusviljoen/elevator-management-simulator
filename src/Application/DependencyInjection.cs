@@ -22,6 +22,7 @@ public static class DependencyInjection
 
         // Register elevator services
         services.AddSingleton<IInMemoryElevatorPoolService, InMemoryElevatorPoolService>();
+        services.AddTransient<IElevatorOrchestratorService, ElevatorOrchestratorService>();
 
         return services;
     }
