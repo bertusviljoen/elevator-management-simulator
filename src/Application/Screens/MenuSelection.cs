@@ -8,5 +8,7 @@ public enum MenuSelection
     /// <summary> Exit </summary>
     Exit,
     /// <summary> Dashboard </summary>
-    Dashboard
+    Dashboard,
+    /// <summary> ElevatorControl </summary>
+    ElevatorControl
 }

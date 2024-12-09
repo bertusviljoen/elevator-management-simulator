@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Screens;
 using Presentation.Screens.Dashboard;
+using Presentation.Screens.ElevatorControl;
 using Spectre.Console;
 
 namespace Presentation;
@@ -40,6 +41,10 @@ public class App(IServiceProvider serviceProvider) : IHostedService
                     {
                         AnsiConsole.MarkupLine($"[red]Login failed[/]");
                     }
+                    break;
+                case MenuSelection.ElevatorControl:
+                    var elevatorControlScreen = serviceProvider.GetRequiredService<ElevatorControlScreen>();
+                    await elevatorControlScreen.ShowAsync(cancellationToken);
                     break;
             }
             

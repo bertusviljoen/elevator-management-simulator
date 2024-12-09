@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Presentation.Screens;
 using Presentation.Screens.Dashboard;
+using Presentation.Screens.ElevatorControl;
 
 namespace Presentation;
 
@@ -22,6 +23,7 @@ public static class DependencyInjections
          services.AddTransient<RegisterScreen>();
          services.AddTransient<LoginScreen>();
          services.AddTransient<DashboardScreen>();
+         services.AddTransient<ElevatorControlScreen>();
          return services;
     }
     
