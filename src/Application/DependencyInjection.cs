@@ -1,4 +1,6 @@
 ﻿using Application.Abstractions.Behaviors;
+using Application.Abstractions.Services;
+using Application.Services;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +19,9 @@ public static class DependencyInjection
         });
 
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly, includeInternalTypes: true);
+
+        // Register elevator services
+        services.AddSingleton<IInMemoryElevatorPoolService, InMemoryElevatorPoolService>();
 
         return services;
     }

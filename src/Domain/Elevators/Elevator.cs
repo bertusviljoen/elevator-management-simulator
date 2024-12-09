@@ -9,6 +9,8 @@ public class Elevator : AuditableEntity
 {
     /// <summary> Get or set the unique identifier for the elevator. </summary>
     public required Guid Id { get; set; }
+    /// <summary> Get or set the number of the elevator. </summary>
+    public required int Number { get; set; }
     /// <summary> Get or set the current floor the elevator is on. </summary>
     public required int CurrentFloor { get; set; }
     /// <summary> Get or set the direction the elevator is moving. </summary>

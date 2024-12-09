@@ -11,11 +11,6 @@ namespace InfrastructureTests.Building;
 
 public class BuildingManagementTests
 {
-    public BuildingManagementTests()
-    {
-
-    }
-
     [Fact]
     public async Task CantCreateBuildingWithoutUser()
     {

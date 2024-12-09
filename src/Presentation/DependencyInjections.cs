@@ -23,22 +23,5 @@ public static class DependencyInjections
          return services;
     }
     
-    /// <summary> Run migrations for the EF Core database context. </summary>
-    public static async Task<IHost> RunMigrationsAsync(this IHost host)
-    {
-        using var scope = host.Services.CreateScope();
-        var logger = scope.ServiceProvider.GetRequiredService<ILogger<ApplicationDbContext>>();
-        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        try
-        {
-            await dbContext.Database.MigrateAsync();
-            logger.LogInformation($"Successfully migrated the database");
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, $"An error occurred while migrating the database");
-            throw;
-        }
-        return host;
-    }
+
 }
