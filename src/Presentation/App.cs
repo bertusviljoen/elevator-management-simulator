@@ -2,6 +2,7 @@ using Application.Screens;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Screens;
+using Presentation.Screens.Dashboard;
 using Spectre.Console;
 
 namespace Presentation;
@@ -19,13 +20,14 @@ public class App(IServiceProvider serviceProvider) : IHostedService
 
         var menuScreen = serviceProvider.GetRequiredService<MenuScreen>();
         var menuSelection = await menuScreen.ShowAsync(cancellationToken);
+        
         while (menuSelection.Value != MenuSelection.Exit)
         {
             switch (menuSelection.Value)
             {
-                case MenuSelection.Register:
-                    var registerScreen = serviceProvider.GetRequiredService<RegisterScreen>();
-                    await registerScreen.ShowAsync(cancellationToken);
+                case MenuSelection.Dashboard:
+                    var dashboardScreen = serviceProvider.GetRequiredService<DashboardScreen>();
+                    await dashboardScreen.ShowAsync(cancellationToken);
                     break;
                 case MenuSelection.Login:
                     var loginScreen = serviceProvider.GetRequiredService<LoginScreen>();
@@ -41,9 +43,9 @@ public class App(IServiceProvider serviceProvider) : IHostedService
                     break;
             }
             
-            menuSelection = await menuScreen.ShowAsync(cancellationToken);
             AnsiConsole.Clear();
             DisplayHeader();
+            menuSelection = await menuScreen.ShowAsync(cancellationToken);
         }
         await StopAsync(cancellationToken);
     }

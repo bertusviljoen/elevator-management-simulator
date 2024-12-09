@@ -13,6 +13,9 @@ public class ElevatorItem
 
     /// <summary> Get or set the current floor the elevator is on. </summary>
     public int CurrentFloor { get; set; }
+    
+    /// <summary> Get or set the destination floor the elevator is moving to. </summary>
+    public int DestinationFloor { get; set; }
 
     /// <summary> Get or set the direction the elevator is moving. </summary>
     [JsonConverter(typeof(JsonStringEnumConverter))]
