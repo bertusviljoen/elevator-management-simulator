@@ -21,7 +21,7 @@ public static class ApplicationDbContextSeedData
                 Id = Guid.Parse("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                 FirstName = "Admin",
                 LastName = "Joe",
-                Email = "admin@buiding.com",
+                Email = "admin@building.com",
                 PasswordHash =
                     "55BC042899399B562DD4A363FD250A9014C045B900716FCDC074861EB69C344A-B44367BE2D0B037E31AEEE2649199100", //Admin123
             }

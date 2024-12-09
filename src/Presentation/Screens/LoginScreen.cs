@@ -3,6 +3,8 @@ using Application.Users.Login;
 using MediatR;
 using Presentation.Extensions;
 using Domain.Common;
+using Infrastructure.Migrations;
+using Infrastructure.Persistence.SeedData;
 using Spectre.Console;
 
 namespace Presentation.Screens;
@@ -17,7 +19,16 @@ public class LoginScreen(IMediator mediator) : IScreen<string>
         while (tryAgain)
         {
             AnsiConsole.Clear();
-            AnsiConsole.MarkupLine("[bold]User Login[/]");
+            AnsiConsole.Write(
+                new FigletText("User Login")
+                    .LeftJustified()
+                    .Color(Color.Blue)
+            );
+
+            var admin = ApplicationDbContextSeedData.GetSeedUsers().First();
+            var tempMessage = $"Administrator User: Email: {admin.Email}, Password: Admin123";
+            AnsiConsole.MarkupLine($"[bold]{tempMessage}[/]");
+            
             var email = AnsiConsole.Prompt(
                 new TextPrompt<string>("What's your email?"));
             var password = AnsiConsole.Prompt(
@@ -25,7 +36,7 @@ public class LoginScreen(IMediator mediator) : IScreen<string>
                     .Secret());
             
             await AnsiConsole.Status()
-                .StartAsync("Thinking...", async ctx => 
+                .StartAsync("Loading...", async ctx => 
                 {
                     var loginCommand = new LoginUserCommand(email, password);
                     loginResult =  await mediator.Send(loginCommand, token);

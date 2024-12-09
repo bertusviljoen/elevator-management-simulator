@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Presentation.Screens;
+using Presentation.Screens.Dashboard;
 
 namespace Presentation;
 
@@ -20,6 +21,7 @@ public static class DependencyInjections
          services.AddTransient<MenuScreen>();
          services.AddTransient<RegisterScreen>();
          services.AddTransient<LoginScreen>();
+         services.AddTransient<DashboardScreen>();
          return services;
     }
     

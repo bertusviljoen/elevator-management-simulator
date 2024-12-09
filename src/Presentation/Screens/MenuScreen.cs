@@ -11,8 +11,9 @@ public class MenuScreen : IScreen<MenuSelection>
     private static readonly Dictionary<string, MenuSelection> MenuOptions = new()
     {
         ["Login"] = MenuSelection.Login,
-        ["Register"] = MenuSelection.Register,
+        ["Dashboard"] = MenuSelection.Dashboard,
         ["Exit"] = MenuSelection.Exit
+        
     };
 
     public async Task<Result<MenuSelection>> ShowAsync(CancellationToken token)
@@ -20,7 +21,7 @@ public class MenuScreen : IScreen<MenuSelection>
         var selection = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
                 .Title("Welcome to the Elevator Management Simulator")
-                .PageSize(3)
+                .PageSize(10)
                 .AddChoices(MenuOptions.Keys));
 
         if (MenuOptions.TryGetValue(selection, out var result))

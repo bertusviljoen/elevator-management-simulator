@@ -5,8 +5,8 @@ public enum MenuSelection
 {
     /// <summary> Login </summary>
     Login,
-    /// <summary> Register </summary>
-    Register,
     /// <summary> Exit </summary>
-    Exit
+    Exit,
+    /// <summary> Dashboard </summary>
+    Dashboard
 }
