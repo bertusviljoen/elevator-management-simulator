@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-.secret.json
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -407,3 +407,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 .containers/
+
+.secret.json
+secret.json
