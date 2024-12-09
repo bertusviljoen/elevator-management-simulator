@@ -1,10 +1,13 @@
 ﻿using System.Text;
 using Application.Abstractions.Authentication;
 using Application.Abstractions.Data;
+using Application.Abstractions.Services;
+using Application.Services;
 using Infrastructure.Authentication;
 using Infrastructure.Authorization;
 using Infrastructure.Database;
 using Infrastructure.Persistance.Interceptors;
+using Infrastructure.Services;
 using Infrastructure.Time;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -16,6 +19,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Domain.Common;
 using Infrastructure.Persistence.Database;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure;
 
@@ -31,10 +36,30 @@ public static class DependencyInjection
             .AddHealthChecks(configuration)
             .AddAuthenticationInternal(configuration)
         ;
+    
+    /// <summary> Run migrations for the EF Core database context. </summary>
+    public static async Task<IHost> RunMigrationsAsync(this IHost host)
+    {
+        using var scope = host.Services.CreateScope();
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<ApplicationDbContext>>();
+        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        try
+        {
+            await dbContext.Database.MigrateAsync();
+            logger.LogInformation($"Successfully migrated the database");
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, $"An error occurred while migrating the database");
+            throw;
+        }
+        return host;
+    }
 
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        services.AddHostedService<ElevatorSimulationHostedService>();
 
         return services;
     }
@@ -48,7 +73,7 @@ public static class DependencyInjection
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
-                    .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                    .UseInMemoryDatabase("TestDb")
                     .UseSnakeCaseNamingConvention()
                     .AddInterceptors(services.BuildServiceProvider().GetServices<ISaveChangesInterceptor>())
                     .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))

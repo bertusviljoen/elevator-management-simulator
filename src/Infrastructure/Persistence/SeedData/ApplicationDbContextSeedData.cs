@@ -10,13 +10,11 @@ namespace Infrastructure.Persistence.SeedData;
 
 public static class ApplicationDbContextSeedData
 {
-    public static void SeedData(this ModelBuilder modelBuilder)
+
+    public static List<User> GetSeedUsers()
     {
-        // 379f3466-663c-4bdb-a81a-a6b27875d36f
-        // f801d0b8-801d-495c-aaa5-a4308fe0f020
-        
         //Administrator user to manage the application
-        var users = new List<User>
+        return new List<User>
         {
             new()
             {
@@ -24,28 +22,29 @@ public static class ApplicationDbContextSeedData
                 FirstName = "Admin",
                 LastName = "Joe",
                 Email = "admin@buiding.com",
-                PasswordHash = "55BC042899399B562DD4A363FD250A9014C045B900716FCDC074861EB69C344A-B44367BE2D0B037E31AEEE2649199100", //Admin123
+                PasswordHash =
+                    "55BC042899399B562DD4A363FD250A9014C045B900716FCDC074861EB69C344A-B44367BE2D0B037E31AEEE2649199100", //Admin123
             }
         };
-        
-        modelBuilder.Entity<User>().HasData(users);
-        
-        //Building 
-        var building = new List<Building>()
+    }
+    
+    public static List<Building> GetSeedBuildings()
+    {
+        return new List<Building>
         {
             new()
             {
                 Id = Guid.Parse("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
                 Name = "Joe's Building",
                 NumberOfFloors = 10,
-                CreatedByUserId = users.FirstOrDefault()!.Id
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
             }
         };
-        
-        modelBuilder.Entity<Building>().HasData(building);
-        
-        //Elevators
-        var elevators = new List<Elevator>()
+    }
+
+    public static List<Elevator> GetSeedElevators()
+    {
+        return new List<Elevator>
         {
             new()
             {
@@ -55,8 +54,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
-                BuildingId = building.FirstOrDefault()!.Id,
-                CreatedByUserId = users.FirstOrDefault()!.Id
+                BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
             },
             new()
             {
@@ -66,8 +65,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
-                BuildingId = building.FirstOrDefault()!.Id,
-                CreatedByUserId = users.FirstOrDefault()!.Id
+                BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
             },
             new()
             {
@@ -77,8 +76,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
-                BuildingId = building.FirstOrDefault()!.Id,
-                CreatedByUserId = users.FirstOrDefault()!.Id
+                BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
             },
             new()
             {
@@ -88,8 +87,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
-                BuildingId = building.FirstOrDefault()!.Id,
-                CreatedByUserId = users.FirstOrDefault()!.Id
+                BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
             },
             new()
             {
@@ -98,25 +97,17 @@ public static class ApplicationDbContextSeedData
                 Number = 5,
                 ElevatorDirection = ElevatorDirection.None,
                 ElevatorStatus = ElevatorStatus.Active,
-                ElevatorType = ElevatorType.Service,
-                BuildingId = building.FirstOrDefault()!.Id,
-                CreatedByUserId = users.FirstOrDefault()!.Id
-            },
-            new()
-            {
-                Id = Guid.Parse("82d562f7-f7d5-4088-b735-9a7b085968d3"),
-                CurrentFloor = 1,
-                Number = 6,
-                ElevatorDirection = ElevatorDirection.None,
-                ElevatorStatus = ElevatorStatus.Active,
-                ElevatorType = ElevatorType.HighSpeed,
-                Speed = 1.0,
-                Capacity = 5,
-                BuildingId = building.FirstOrDefault()!.Id,
-                CreatedByUserId = users.FirstOrDefault()!.Id
+                ElevatorType = ElevatorType.Passenger,
+                BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
             }
         };
-        
-        modelBuilder.Entity<Elevator>().HasData(elevators);
+    }
+
+    public static void SeedData(this ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasData(GetSeedUsers());
+        modelBuilder.Entity<Building>().HasData(GetSeedBuildings());
+        modelBuilder.Entity<Elevator>().HasData(GetSeedElevators());
     }
 }
