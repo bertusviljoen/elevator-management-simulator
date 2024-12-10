@@ -15,13 +15,19 @@ public static class Program
     {
         try
         {
+            //Configure Serilog
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File("logs/log-.txt",
+                    rollingInterval: RollingInterval.Day,
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {SourceContext}:{Message:lj}{NewLine}{Exception}{NewLine}")
+                .CreateLogger();
+
             // Build a generic host with default configuration
-            var host = Host
-                .CreateDefaultBuilder(args)
+            var host = Host.CreateDefaultBuilder(args)
+                .UseSerilog() // Use Serilog as the logging provider
                 .ConfigureServices((context, services) =>
                 {
-                    // Add the Serilog logger
-                    services.AddSerilog();
                     // Add the application services
                     services.AddApplication();
                     // Add the infrastructure services
@@ -31,26 +37,21 @@ public static class Program
                     // Register our hosted service (the entry point logic)
                     services.AddHostedService<App>();
                 })
-                .ConfigureAppConfiguration((context, builder) =>
-                {
-                    //ToDo: Only run this in development
-                    builder.AddUserSecrets<App>();
-                })
+                .ConfigureAppConfiguration((context, builder) => builder.AddUserSecrets<App>())
                 .Build();
 
             await host.RunMigrationsAsync();
 
-            // Run the host (this will call StartAsync on IHostedService implementations)
             await host.RunAsync();
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
-            Console.WriteLine(ex);
+            Log.Fatal(ex, "Application terminated unexpectedly");
         }
         finally
         {
             Console.WriteLine("Thank you! Bye bye");
+            await Log.CloseAndFlushAsync();
         }
     }
 }
-

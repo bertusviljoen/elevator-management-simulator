@@ -25,6 +25,12 @@ public class ElevatorControlMultipleRequestScreen(IMediator mediator): IScreen<b
 
             var floors = AnsiConsole.Prompt(
                 new TextPrompt<string>("What floors are you going to? (comma separated)"));
+            
+            //remove trailing comma
+            if (floors.EndsWith(","))
+            {
+                floors = floors.Remove(floors.Length - 1);
+            }
 
             var buildingId = ApplicationDbContextSeedData.GetSeedBuildings().First()!.Id;
             await AnsiConsole.Status()
