@@ -20,7 +20,7 @@ public static class Program
                 .MinimumLevel.Information()
                 .WriteTo.File("logs/log-.txt",
                     rollingInterval: RollingInterval.Day,
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {SourceContext}:{Message:lj}{NewLine}{Exception}{NewLine}")
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {SourceContext}:{Message:lj}:{Exception}{NewLine}")
                 .CreateLogger();
 
             // Build a generic host with default configuration

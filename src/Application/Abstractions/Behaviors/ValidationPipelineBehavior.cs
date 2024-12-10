@@ -3,11 +3,13 @@ using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
 using Domain.Common;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Abstractions.Behaviors;
 
 internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
-    IEnumerable<IValidator<TRequest>> validators)
+    IEnumerable<IValidator<TRequest>> validators,
+    ILogger<ValidationPipelineBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : class
 {
@@ -16,8 +18,10 @@ internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
+        logger.LogInformation("Validating request {Request}", request);
         ValidationFailure[] validationFailures = await ValidateAsync(request);
 
+        logger.LogInformation("Validation failures Count: {ValidationFailures}", validationFailures.Length);
         if (validationFailures.Length == 0)
         {
             return await next();
@@ -26,14 +30,18 @@ internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
         if (typeof(TResponse).IsGenericType &&
             typeof(TResponse).GetGenericTypeDefinition() == typeof(Result<>))
         {
+            logger.LogInformation("Returning validation failure result");
             Type resultType = typeof(TResponse).GetGenericArguments()[0];
+            logger.LogInformation("Result type: {ResultType}", resultType);
 
             MethodInfo? failureMethod = typeof(Result<>)
                 .MakeGenericType(resultType)
                 .GetMethod(nameof(Result<object>.ValidationFailure));
 
+            logger.LogInformation("Failure method: {FailureMethod}", failureMethod);
             if (failureMethod is not null)
             {
+                logger.LogInformation("Invoking failure method");
                 return (TResponse)failureMethod.Invoke(
                     null,
                     [CreateValidationError(validationFailures)]);
@@ -41,29 +49,38 @@ internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
         }
         else if (typeof(TResponse) == typeof(Result))
         {
+            logger.LogInformation("Returning validation failure result");
             return (TResponse)(object)Result.Failure(CreateValidationError(validationFailures));
         }
 
+        logger.LogInformation("Throwing validation exception");
         throw new ValidationException(validationFailures);
     }
 
     private async Task<ValidationFailure[]> ValidateAsync(TRequest request)
     {
+        logger.LogInformation("Validating request {Request}", request);
+        logger.LogInformation("Validators Count: {ValidatorsCount}", validators.Count());
         if (!validators.Any())
         {
             return [];
         }
 
+        logger.LogInformation("Validating request {Request}", request);
         var context = new ValidationContext<TRequest>(request);
 
+        
         ValidationResult[] validationResults = await Task.WhenAll(
             validators.Select(validator => validator.ValidateAsync(context)));
+        
+        logger.LogInformation("Validation results Count: {ValidationResultsCount}", validationResults.Length);
 
         ValidationFailure[] validationFailures = validationResults
             .Where(validationResult => !validationResult.IsValid)
             .SelectMany(validationResult => validationResult.Errors)
             .ToArray();
 
+        logger.LogInformation("Validation failures Count: {ValidationFailuresCount}", validationFailures.Length);
         return validationFailures;
     }
 

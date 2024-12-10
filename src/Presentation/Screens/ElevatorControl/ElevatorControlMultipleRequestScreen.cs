@@ -3,12 +3,15 @@ using Application.Elevators.Request;
 using Domain.Common;
 using Infrastructure.Persistence.SeedData;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Presentation.Extensions;
 using Spectre.Console;
 
 namespace Presentation.Screens.ElevatorControl;
 
-public class ElevatorControlMultipleRequestScreen(IMediator mediator): IScreen<bool>
+public class ElevatorControlMultipleRequestScreen(IServiceProvider serviceProvider, 
+    ILogger<ElevatorControlMultipleRequestScreen> logger): IScreen<bool>
 {
     public async Task<Result<bool>> ShowAsync(CancellationToken token)
     {
@@ -36,9 +39,13 @@ public class ElevatorControlMultipleRequestScreen(IMediator mediator): IScreen<b
             await AnsiConsole.Status()
                 .StartAsync("Requesting elevators...", async ctx =>
                 {
+                    logger.LogInformation("Requesting elevators for building {BuildingId}", buildingId);
+                    logger.LogInformation("Floors requested: {Floors}", floors);
                     var floorRequests = floors.Split(',').Select(int.Parse).ToList();
-                    foreach (int floorRequest in floorRequests.AsParallel())
+                    foreach (int floorRequest in floorRequests)
                     {
+                        var scope = serviceProvider.CreateScope();
+                        var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
                         var request = new RequestElevatorCommand(buildingId, floorRequest);
                         result = await mediator.Send(request, token);                        
                     }
@@ -47,6 +54,7 @@ public class ElevatorControlMultipleRequestScreen(IMediator mediator): IScreen<b
             anotherRequest = result?.Match(
                 onSuccess: () =>
                 {
+                    logger.LogInformation("Elevators requested successfully");
                     AnsiConsole.MarkupLine("[green]Elevators requested successfully[/]");
                     return AnsiConsole.Confirm("Do you want to request more elevators?");
                 },
@@ -54,6 +62,7 @@ public class ElevatorControlMultipleRequestScreen(IMediator mediator): IScreen<b
                 {
                     var friendlyError = GetErrorMessage(error);
                     AnsiConsole.MarkupLine($"[red]{friendlyError}[/]");
+                    logger.LogError("Error requesting elevators: {Error}", friendlyError);
                     return AnsiConsole.Confirm("Do you want to try again?");
                 }) ?? false;
         }

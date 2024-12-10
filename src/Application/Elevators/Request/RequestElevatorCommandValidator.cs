@@ -1,10 +1,11 @@
 using FluentValidation;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Elevators.Request;
 
 public class RequestElevatorCommandValidator : AbstractValidator<RequestElevatorCommand>
 {
-    public RequestElevatorCommandValidator()
+    public RequestElevatorCommandValidator() 
     {
         RuleFor(x => x.BuildingId)
             .NotEmpty();
