@@ -35,8 +35,12 @@ public class ElevatorSimulationHostedService(
                     continue;
                 }
 
-                foreach (var elevator in elevatorsResult.Value)
+                foreach (var elevator in elevatorsResult.Value.AsParallel())
                 {
+                    logger.LogInformation(
+                        "Simulating elevator {ElevatorId} on floor {Floor}",
+                        elevator.Id, elevator.CurrentFloor);
+                    
                     var elevatorChanged = true;
                     if (elevator.ElevatorStatus != ElevatorStatus.Active)
                     {
@@ -48,23 +52,9 @@ public class ElevatorSimulationHostedService(
                     {
                         case ElevatorDirection.Up:
                             elevator.CurrentFloor += elevator.FloorsPerSecond;
-                            // //Simulate hard break!
-                            // if (elevator.CurrentFloor >= elevator.DestinationFloor)
-                            // {
-                            //     elevator.CurrentFloor = elevator.DestinationFloor;
-                            //     elevator.ElevatorDirection = ElevatorDirection.None;
-                            //     elevator.DoorStatus = ElevatorDoorStatus.Open;
-                            // }
                             break;
                         case ElevatorDirection.Down:
                             elevator.CurrentFloor -= elevator.FloorsPerSecond;
-                            //Simulate hard break!
-                            // if (elevator.CurrentFloor <= elevator.DestinationFloor)
-                            // {
-                            //     elevator.CurrentFloor = elevator.DestinationFloor;
-                            //     elevator.ElevatorDirection = ElevatorDirection.None;
-                            //     elevator.DoorStatus = ElevatorDoorStatus.Open;
-                            // }
                             break;
                         case ElevatorDirection.None:
                             {

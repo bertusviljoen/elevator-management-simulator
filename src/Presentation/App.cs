@@ -11,7 +11,7 @@ namespace Presentation;
 // A hosted service that can be run by the Host
 // This could be replaced by more complex logic such as background tasks, 
 // scheduled jobs, or other application logic
-public class App(IServiceProvider serviceProvider) : IHostedService
+public class App(IServiceProvider serviceProvider,IHostApplicationLifetime applicationLifetime) : IHostedService
 {
     // This method is called when the host starts
     public async Task StartAsync(CancellationToken cancellationToken)
@@ -46,6 +46,10 @@ public class App(IServiceProvider serviceProvider) : IHostedService
                     var elevatorControlScreen = serviceProvider.GetRequiredService<ElevatorControlScreen>();
                     await elevatorControlScreen.ShowAsync(cancellationToken);
                     break;
+                case MenuSelection.MultiElevatorControl:
+                    var multiElevatorControlScreen = serviceProvider.GetRequiredService<ElevatorControlMultipleRequestScreen>();
+                    await multiElevatorControlScreen.ShowAsync(cancellationToken);
+                    break;
             }
             
             AnsiConsole.Clear();
@@ -68,6 +72,7 @@ public class App(IServiceProvider serviceProvider) : IHostedService
     public Task StopAsync(CancellationToken cancellationToken)
     {
         AnsiConsole.MarkupLine("[grey]Shutting down App...[/]");
-        throw new OperationCanceledException("App is shutting down");
+        applicationLifetime.StopApplication();
+        return Task.CompletedTask;
     }
 }

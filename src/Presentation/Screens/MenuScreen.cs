@@ -10,11 +10,11 @@ public class MenuScreen : IScreen<MenuSelection>
 {
     private static readonly Dictionary<string, MenuSelection> MenuOptions = new()
     {
-        ["Login"] = MenuSelection.Login,
         ["Dashboard"] = MenuSelection.Dashboard,
         ["Elevator Control"] = MenuSelection.ElevatorControl,
+        ["Multi Request Elevator Control"] = MenuSelection.MultiElevatorControl,
+        ["Login"] = MenuSelection.Login,
         ["Exit"] = MenuSelection.Exit
-        
     };
 
     public async Task<Result<MenuSelection>> ShowAsync(CancellationToken token)

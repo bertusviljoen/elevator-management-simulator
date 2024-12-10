@@ -10,5 +10,7 @@ public enum MenuSelection
     /// <summary> Dashboard </summary>
     Dashboard,
     /// <summary> ElevatorControl </summary>
-    ElevatorControl
+    ElevatorControl,
+    //Multi Request Elevator Control
+    MultiElevatorControl
 }
