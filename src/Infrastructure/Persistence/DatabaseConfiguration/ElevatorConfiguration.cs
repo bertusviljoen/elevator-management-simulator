@@ -32,10 +32,10 @@ internal sealed class ElevatorConfiguration : IEntityTypeConfiguration<Elevator>
             .HasConversion<string>()            
             .IsRequired();
 
-        builder.Property(e => e.Speed)
+        builder.Property(e => e.FloorsPerSecond)
             .IsRequired();
 
-        builder.Property(e => e.Capacity)
+        builder.Property(e => e.QueueCapacity)
             .IsRequired();
 
         builder.HasOne(e => e.Building)

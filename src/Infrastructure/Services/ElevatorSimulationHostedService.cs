@@ -14,10 +14,10 @@ public class ElevatorSimulationHostedService(
     : BackgroundService
 {
     private readonly TimeSpan _simulationInterval = TimeSpan.FromSeconds(1);
-    
+
     //ToDo: This should be configurable
     private readonly Guid _buildingId = ApplicationDbContextSeedData.GetSeedBuildings()!.FirstOrDefault()!.Id;
-    
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         logger.LogInformation("Elevator simulation service is starting.");
@@ -34,23 +34,37 @@ public class ElevatorSimulationHostedService(
                     await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken); // Back off on error
                     continue;
                 }
-                
+
                 foreach (var elevator in elevatorsResult.Value)
                 {
+                    var elevatorChanged = true;
                     if (elevator.ElevatorStatus != ElevatorStatus.Active)
                     {
-                        return;
+                        continue;
                     }
-                    
+
                     // Simulate elevator movement based on direction
-                    // ToDo: Implement logic for elevator movement taking into account speed
                     switch (elevator.ElevatorDirection)
                     {
                         case ElevatorDirection.Up:
-                            elevator.CurrentFloor++;
+                            elevator.CurrentFloor += elevator.FloorsPerSecond;
+                            // //Simulate hard break!
+                            // if (elevator.CurrentFloor >= elevator.DestinationFloor)
+                            // {
+                            //     elevator.CurrentFloor = elevator.DestinationFloor;
+                            //     elevator.ElevatorDirection = ElevatorDirection.None;
+                            //     elevator.DoorStatus = ElevatorDoorStatus.Open;
+                            // }
                             break;
                         case ElevatorDirection.Down:
-                            elevator.CurrentFloor--;
+                            elevator.CurrentFloor -= elevator.FloorsPerSecond;
+                            //Simulate hard break!
+                            // if (elevator.CurrentFloor <= elevator.DestinationFloor)
+                            // {
+                            //     elevator.CurrentFloor = elevator.DestinationFloor;
+                            //     elevator.ElevatorDirection = ElevatorDirection.None;
+                            //     elevator.DoorStatus = ElevatorDoorStatus.Open;
+                            // }
                             break;
                         case ElevatorDirection.None:
                             {
@@ -61,23 +75,35 @@ public class ElevatorSimulationHostedService(
                                         ? ElevatorDirection.Up
                                         : ElevatorDirection.Down;
                                     elevator.DestinationFloor = destinationFloor;
+                                    elevator.DoorStatus = ElevatorDoorStatus.Closed;
+                                    break;
                                 }
+                                elevatorChanged = false;
                             }
-                        break;
+                            break;
                     }
-
+                    
                     if (elevator.CurrentFloor == elevator.DestinationFloor)
                     {
                         elevator.ElevatorDirection = ElevatorDirection.None;
+                        elevator.DoorStatus = ElevatorDoorStatus.Open;
+                    }
+                    
+                    if (elevator.ElevatorDirection == ElevatorDirection.None)
+                    {
+                        elevator.DoorStatus = ElevatorDoorStatus.Open;
                     }
 
                     // Update elevator state with new floor
-                    await elevatorPoolService.UpdateElevatorAsync(
-                        elevator, stoppingToken);
+                    if (elevatorChanged)
+                    {
+                        await elevatorPoolService.UpdateElevatorAsync(
+                            elevator, stoppingToken);
 
-                    logger.LogInformation(
-                        "Elevator {ElevatorId} moved to floor {Floor}",
-                        elevator.Id,elevator);
+                        logger.LogInformation(
+                            "Elevator {ElevatorId} moved to floor {Floor}",
+                            elevator.Id, elevator.CurrentFloor);
+                    }
                 }
 
                 await Task.Delay(_simulationInterval, stoppingToken);
@@ -89,5 +115,5 @@ public class ElevatorSimulationHostedService(
             }
         }
     }
-    
+
 }

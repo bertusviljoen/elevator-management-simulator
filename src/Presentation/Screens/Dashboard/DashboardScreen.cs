@@ -81,11 +81,13 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                                 elevator.DestinationFloor.ToString(),
                                 elevator.DestinationFloors.Count.ToString(),
                                 elevator.ElevatorDirection.ToString(),
-                                elevator.ElevatorStatus.ToString(),
+                                elevator.ElevatorStatus == ElevatorStatus.Active
+                                    ? $"[green]{elevator.ElevatorStatus.ToString()}[/]"
+                                    : $"[red]{elevator.ElevatorStatus.ToString()}[/]",
                                 elevator.DoorStatus.ToString(),
                                 elevator.ElevatorType.ToString(),
-                                elevator.Speed.ToString(),
-                                elevator.Capacity.ToString());
+                                elevator.FloorsPerSecond.ToString(),
+                                elevator.QueueCapacity.ToString());
                         }
 
                         AnsiConsole.Write(table);

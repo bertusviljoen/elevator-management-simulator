@@ -67,7 +67,7 @@ public class App(IServiceProvider serviceProvider) : IHostedService
     // This method is called when the host is shutting down
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        AnsiConsole.MarkupLine("[grey]Shutting down...[/]");
-        return Task.CompletedTask;
+        AnsiConsole.MarkupLine("[grey]Shutting down App...[/]");
+        throw new OperationCanceledException("App is shutting down");
     }
 }

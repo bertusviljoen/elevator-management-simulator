@@ -68,7 +68,6 @@ public class ElevatorPoolsTests
         foreach (var elevator in elevators)
         {
             Assert.Equal(buildingId, elevator.BuildingId);
-            Assert.Equal(ElevatorStatus.Active, elevator.ElevatorStatus);
             Assert.Equal(ElevatorDirection.None, elevator.ElevatorDirection);
             Assert.Equal(1, elevator.CurrentFloor);
         }

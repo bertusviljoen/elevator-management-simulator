@@ -1,6 +1,7 @@
 ﻿using Application.Abstractions.Behaviors;
 using Application.Abstractions.Services;
 using Application.Services;
+using Application.Services.ElevatorSelection;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +25,10 @@ public static class DependencyInjection
         services.AddSingleton<IInMemoryElevatorPoolService, InMemoryElevatorPoolService>();
         services.AddTransient<IElevatorOrchestratorService, ElevatorOrchestratorService>();
 
+        // Strategy pattern for elevator selection
+        services.AddTransient<IElevatorSelectionContext, ElevatorSelectionContext>();
+        services.AddTransient<IClosestElevatorStrategy, ClosestElevatorStrategy>();
+        services.AddTransient<IQueueCapacityStrategy, QueueCapacityStrategy>();
         return services;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241209164353_elevatorstatus")]
+    partial class elevatorstatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,9 +145,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("number");
 
-                    b.Property<int>("QueueCapacity")
+                    b.Property<int>("PersonCapacity")
                         .HasColumnType("INTEGER")
-                        .HasColumnName("queue_capacity");
+                        .HasColumnName("person_capacity");
 
                     b.Property<Guid?>("UpdatedByUserId")
                         .HasColumnType("TEXT")
@@ -185,7 +188,7 @@ namespace Infrastructure.Migrations
                             ElevatorType = "HighSpeed",
                             FloorsPerSecond = 5,
                             Number = 1,
-                            QueueCapacity = 3
+                            PersonCapacity = 10
                         },
                         new
                         {
@@ -202,7 +205,7 @@ namespace Infrastructure.Migrations
                             ElevatorType = "Passenger",
                             FloorsPerSecond = 1,
                             Number = 2,
-                            QueueCapacity = 3
+                            PersonCapacity = 10
                         },
                         new
                         {
@@ -219,7 +222,7 @@ namespace Infrastructure.Migrations
                             ElevatorType = "Passenger",
                             FloorsPerSecond = 1,
                             Number = 3,
-                            QueueCapacity = 3
+                            PersonCapacity = 10
                         },
                         new
                         {
@@ -236,7 +239,7 @@ namespace Infrastructure.Migrations
                             ElevatorType = "Passenger",
                             FloorsPerSecond = 1,
                             Number = 4,
-                            QueueCapacity = 3
+                            PersonCapacity = 10
                         },
                         new
                         {
@@ -253,7 +256,7 @@ namespace Infrastructure.Migrations
                             ElevatorType = "Passenger",
                             FloorsPerSecond = 1,
                             Number = 5,
-                            QueueCapacity = 3
+                            PersonCapacity = 10
                         });
                 });
 

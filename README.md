@@ -86,3 +86,12 @@ If you're ready to learn more, check out [**Pragmatic Clean Architecture**](http
 - Integration testing
 
 Stay awesome!
+
+Wish list:
+- Options pattern for service configuration and validation
+- Observer pattern to notify clients about the state of the elevator changes
+- Manage building detail screens
+- Manage elevator detail screens
+- Auditing of changes by registered users using pipeline behaviors
+- General Serilog configuration
+- Observable Screen to view real time updates
