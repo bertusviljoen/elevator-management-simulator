@@ -52,9 +52,21 @@ public class ElevatorSimulationHostedService(
                     {
                         case ElevatorDirection.Up:
                             elevator.CurrentFloor += elevator.FloorsPerSecond;
+                            //check for when speed elevators pass the destination floor
+                            if (elevator.ElevatorType == ElevatorType.HighSpeed &&
+                                elevator.CurrentFloor > elevator.DestinationFloor)
+                            {
+                                elevator.CurrentFloor = elevator.DestinationFloor;
+                            }
                             break;
                         case ElevatorDirection.Down:
                             elevator.CurrentFloor -= elevator.FloorsPerSecond;
+                            //check for when speed elevators pass the destination floor
+                            if (elevator.ElevatorType == ElevatorType.HighSpeed &&
+                                elevator.CurrentFloor < elevator.DestinationFloor)
+                            {
+                                elevator.CurrentFloor = elevator.DestinationFloor;
+                            }
                             break;
                         case ElevatorDirection.None:
                             {

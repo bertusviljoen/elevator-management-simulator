@@ -39,4 +39,12 @@ public class Elevator : AuditableEntity
     public required Guid BuildingId { get; set; }
     /// <summary> Get or set the building the elevator is in. </summary>
     public virtual Building Building { get; set; }
+
+    /// <summary> Override the ToString method to provide a single line string representation of the elevator. </summary>
+    /// <returns></returns>
+    public override string ToString()
+    {
+        //Single line with all the property values
+        return $"Elevator {Number} is on floor {CurrentFloor} and is moving to {DestinationFloor} with status {ElevatorStatus}";
+    }
 }
