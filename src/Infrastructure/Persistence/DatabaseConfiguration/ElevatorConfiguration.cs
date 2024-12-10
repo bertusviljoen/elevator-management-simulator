@@ -35,7 +35,7 @@ internal sealed class ElevatorConfiguration : IEntityTypeConfiguration<Elevator>
         builder.Property(e => e.FloorsPerSecond)
             .IsRequired();
 
-        builder.Property(e => e.PersonCapacity)
+        builder.Property(e => e.QueueCapacity)
             .IsRequired();
 
         builder.HasOne(e => e.Building)

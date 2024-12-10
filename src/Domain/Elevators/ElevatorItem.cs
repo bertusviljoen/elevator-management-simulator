@@ -39,7 +39,7 @@ public class ElevatorItem
     public int FloorsPerSecond { get; set; } = 1;
 
     /// <summary> Get or set the capacity of the elevator. </summary>
-    public int PersonCapacity { get; set; } = 10;
+    public int QueueCapacity { get; set; } = 10;
 
     /// <summary> Get or set the unique identifier of the building the elevator is in. </summary>
     public Guid BuildingId { get; set; }
@@ -53,7 +53,7 @@ public class ElevatorItem
         ElevatorStatus = elevator.ElevatorStatus,
         ElevatorType = elevator.ElevatorType,
         FloorsPerSecond = elevator.FloorsPerSecond,
-        PersonCapacity = elevator.PersonCapacity,
+        QueueCapacity = elevator.QueueCapacity,
         BuildingId = elevator.BuildingId,
         DestinationFloor = elevator.DestinationFloor,
         DestinationFloors = new Queue<int>(string.IsNullOrWhiteSpace(elevator.DestinationFloors) ? new int[0] : elevator.DestinationFloors.Split(',').Select(int.Parse)),
@@ -71,7 +71,7 @@ public class ElevatorItem
         ElevatorStatus = ElevatorStatus,
         ElevatorType = ElevatorType,
         FloorsPerSecond = FloorsPerSecond,
-        PersonCapacity = PersonCapacity,
+        QueueCapacity = QueueCapacity,
         BuildingId = BuildingId,
         DestinationFloor = DestinationFloor,
         DestinationFloors = new Queue<int>(DestinationFloors),

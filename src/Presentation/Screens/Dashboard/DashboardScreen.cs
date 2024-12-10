@@ -87,7 +87,7 @@ public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>
                                 elevator.DoorStatus.ToString(),
                                 elevator.ElevatorType.ToString(),
                                 elevator.FloorsPerSecond.ToString(),
-                                elevator.PersonCapacity.ToString());
+                                elevator.QueueCapacity.ToString());
                         }
 
                         AnsiConsole.Write(table);

@@ -34,7 +34,7 @@ public class Elevator : AuditableEntity
     /// <summary> Get or set the speed of the elevator. </summary>
     public int FloorsPerSecond { get; set; } = 1;
     /// <summary> Get or set the capacity of the elevator. </summary>
-    public int PersonCapacity { get; set; } = 10;
+    public int QueueCapacity { get; set; } = 3;
     /// <summary> Get or set the unique identifier of the building the elevator is in. </summary>
     public required Guid BuildingId { get; set; }
     /// <summary> Get or set the building the elevator is in. </summary>

@@ -68,6 +68,6 @@ public class App(IServiceProvider serviceProvider) : IHostedService
     public Task StopAsync(CancellationToken cancellationToken)
     {
         AnsiConsole.MarkupLine("[grey]Shutting down App...[/]");
-        return Task.CompletedTask;
+        throw new OperationCanceledException("App is shutting down");
     }
 }

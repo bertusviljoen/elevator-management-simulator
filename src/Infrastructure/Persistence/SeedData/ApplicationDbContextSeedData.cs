@@ -56,7 +56,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorType = ElevatorType.HighSpeed,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
                 CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id,
-                FloorsPerSecond = 5
+                FloorsPerSecond = 5,
+                QueueCapacity = 3
             },
             new()
             {
@@ -67,7 +68,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
-                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id,
+                QueueCapacity = 3
             },
             new()
             {
@@ -78,7 +80,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorStatus = ElevatorStatus.Active,
                 ElevatorType = ElevatorType.Passenger,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
-                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id,
+                QueueCapacity = 3
             },
             new()
             {
@@ -89,7 +92,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorStatus = ElevatorStatus.Maintenance,
                 ElevatorType = ElevatorType.Passenger,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
-                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id,
+                QueueCapacity = 3
             },
             new()
             {
@@ -100,7 +104,8 @@ public static class ApplicationDbContextSeedData
                 ElevatorStatus = ElevatorStatus.OutOfService,
                 ElevatorType = ElevatorType.Passenger,
                 BuildingId = GetSeedBuildings().FirstOrDefault()!.Id,
-                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id
+                CreatedByUserId = GetSeedUsers().FirstOrDefault()!.Id,
+                QueueCapacity = 3
             }
         };
     }
