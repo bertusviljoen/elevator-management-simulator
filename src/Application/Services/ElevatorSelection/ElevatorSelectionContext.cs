@@ -25,7 +25,7 @@ public class ElevatorSelectionContext(
         }
         
         logger.LogInformation("Selected elevator using closest strategy and not at capacity");
-        results = queueCapacityStrategy.SelectElevator(elevators, requestedFloor);
+        results = queueCapacityStrategy.SelectElevator(results.Value, requestedFloor);
         if (results.IsFailure)
         {
             logger.LogWarning("Failed to select elevator using queue capacity strategy. No elevators available");

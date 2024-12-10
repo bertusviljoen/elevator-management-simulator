@@ -25,6 +25,7 @@ public static class DependencyInjections
          services.AddTransient<DashboardScreen>();
          services.AddTransient<ElevatorControlScreen>();
          services.AddTransient<ElevatorControlMultipleRequestScreen>();
+         services.AddTransient<ConfigurationMenu>();
          return services;
     }
     
