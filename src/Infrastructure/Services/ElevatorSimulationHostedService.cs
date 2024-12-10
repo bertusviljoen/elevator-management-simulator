@@ -40,7 +40,7 @@ public class ElevatorSimulationHostedService(
                     var elevatorChanged = true;
                     if (elevator.ElevatorStatus != ElevatorStatus.Active)
                     {
-                        return;
+                        continue;
                     }
 
                     // Simulate elevator movement based on direction
@@ -48,23 +48,23 @@ public class ElevatorSimulationHostedService(
                     {
                         case ElevatorDirection.Up:
                             elevator.CurrentFloor += elevator.FloorsPerSecond;
-                            //Simulate hard break!
-                            if (elevator.CurrentFloor >= elevator.DestinationFloor)
-                            {
-                                elevator.CurrentFloor = elevator.DestinationFloor;
-                                elevator.ElevatorDirection = ElevatorDirection.None;
-                                elevator.DoorStatus = ElevatorDoorStatus.Open;
-                            }
+                            // //Simulate hard break!
+                            // if (elevator.CurrentFloor >= elevator.DestinationFloor)
+                            // {
+                            //     elevator.CurrentFloor = elevator.DestinationFloor;
+                            //     elevator.ElevatorDirection = ElevatorDirection.None;
+                            //     elevator.DoorStatus = ElevatorDoorStatus.Open;
+                            // }
                             break;
                         case ElevatorDirection.Down:
                             elevator.CurrentFloor -= elevator.FloorsPerSecond;
                             //Simulate hard break!
-                            if (elevator.CurrentFloor <= elevator.DestinationFloor)
-                            {
-                                elevator.CurrentFloor = elevator.DestinationFloor;
-                                elevator.ElevatorDirection = ElevatorDirection.None;
-                                elevator.DoorStatus = ElevatorDoorStatus.Open;
-                            }
+                            // if (elevator.CurrentFloor <= elevator.DestinationFloor)
+                            // {
+                            //     elevator.CurrentFloor = elevator.DestinationFloor;
+                            //     elevator.ElevatorDirection = ElevatorDirection.None;
+                            //     elevator.DoorStatus = ElevatorDoorStatus.Open;
+                            // }
                             break;
                         case ElevatorDirection.None:
                             {
@@ -81,6 +81,12 @@ public class ElevatorSimulationHostedService(
                                 elevatorChanged = false;
                             }
                             break;
+                    }
+                    
+                    if (elevator.CurrentFloor == elevator.DestinationFloor)
+                    {
+                        elevator.ElevatorDirection = ElevatorDirection.None;
+                        elevator.DoorStatus = ElevatorDoorStatus.Open;
                     }
                     
                     if (elevator.ElevatorDirection == ElevatorDirection.None)
