@@ -94,3 +94,4 @@ Wish list:
 - Manage elevator detail screens
 - Auditing of changes by registered users using pipeline behaviors
 - General Serilog configuration
+- Observable Screen to view real time updates
