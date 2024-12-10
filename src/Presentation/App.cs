@@ -1,4 +1,6 @@
+using Application.Abstractions.Data;
 using Application.Screens;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Screens;
@@ -13,11 +15,22 @@ namespace Presentation;
 // scheduled jobs, or other application logic
 public class App(IServiceProvider serviceProvider,IHostApplicationLifetime applicationLifetime) : IHostedService
 {
+    private string _buildingName = string.Empty;
     // This method is called when the host starts
     public async Task StartAsync(CancellationToken cancellationToken)
     {
+        //Get building name
+        var applicationContext = serviceProvider.GetRequiredService<IApplicationDbContext>();
+        var defaultBuilding = await
+            applicationContext.Buildings.FirstOrDefaultAsync(a => a.IsDefault, cancellationToken: cancellationToken);
+
+        if (defaultBuilding != null)
+        {
+            _buildingName = defaultBuilding.Name;
+        }
+        
         // Display a fancy header
-        DisplayHeader();
+        DisplayHeader(_buildingName);
 
         var menuScreen = serviceProvider.GetRequiredService<MenuScreen>();
         var menuSelection = await menuScreen.ShowAsync(cancellationToken);
@@ -33,36 +46,37 @@ public class App(IServiceProvider serviceProvider,IHostApplicationLifetime appli
                 case MenuSelection.Login:
                     var loginScreen = serviceProvider.GetRequiredService<LoginScreen>();
                     var loginResult = await loginScreen.ShowAsync(cancellationToken);
-                    if (loginResult.IsSuccess)
+                    if (loginResult.IsSuccess && !string.IsNullOrEmpty(loginResult.Value))
                     {
-                        AnsiConsole.MarkupLine($"[green]Login successful[/]");
-                    }
-                    else
-                    {
-                        AnsiConsole.MarkupLine($"[red]Login failed[/]");
+                        var configurationMenu = serviceProvider.GetRequiredService<ConfigurationMenu>();
+                        await configurationMenu.ShowAsync(cancellationToken);
                     }
                     break;
                 case MenuSelection.ElevatorControl:
                     var elevatorControlScreen = serviceProvider.GetRequiredService<ElevatorControlScreen>();
                     await elevatorControlScreen.ShowAsync(cancellationToken);
+                    await serviceProvider.GetRequiredService<DashboardScreen>().ShowAsync(cancellationToken);
                     break;
                 case MenuSelection.MultiElevatorControl:
                     var multiElevatorControlScreen = serviceProvider.GetRequiredService<ElevatorControlMultipleRequestScreen>();
                     await multiElevatorControlScreen.ShowAsync(cancellationToken);
+                    await serviceProvider.GetRequiredService<DashboardScreen>().ShowAsync(cancellationToken);
                     break;
             }
             
             AnsiConsole.Clear();
-            DisplayHeader();
+            DisplayHeader(_buildingName);
             menuSelection = await menuScreen.ShowAsync(cancellationToken);
         }
         await StopAsync(cancellationToken);
     }
 
-    private static void DisplayHeader()
+    private static void DisplayHeader(string buildingName)
     {
+        //check if building name is empty
+        var name = string.IsNullOrEmpty(buildingName) ? "" : $"{buildingName}'s";
         AnsiConsole.Write(
-            new FigletText(" Welcome to Elevator Simulator")
+            new FigletText($" Welcome to {name} Elevator Simulator")
                 .LeftJustified()
                 .Color(Color.Blue)
         );
