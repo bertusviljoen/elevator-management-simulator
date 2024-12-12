@@ -1,10 +1,9 @@
 using System.Diagnostics;
 using Application.Abstractions.Screen;
 using Application.Abstractions.Services;
-using Application.Services;
 using Domain.Common;
 using Domain.Elevators;
-using Infrastructure.Migrations;
+
 using Infrastructure.Persistence.SeedData;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Extensions;

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241208120755_SeedDataElevatorNumber")]
-    partial class SeedDataElevatorNumber
+    [Migration("20241212084907_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,10 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDateTimeUtc")
                         .HasColumnType("TEXT")
                         .HasColumnName("created_date_time_utc");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("is_default");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -76,6 +80,7 @@ namespace Infrastructure.Migrations
                             Id = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
                             CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                             CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDefault = true,
                             Name = "Joe's Building",
                             NumberOfFloors = 10
                         });
@@ -92,10 +97,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("building_id");
 
-                    b.Property<int>("Capacity")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("capacity");
-
                     b.Property<Guid>("CreatedByUserId")
                         .HasColumnType("TEXT")
                         .HasColumnName("created_by_user_id");
@@ -107,6 +108,19 @@ namespace Infrastructure.Migrations
                     b.Property<int>("CurrentFloor")
                         .HasColumnType("INTEGER")
                         .HasColumnName("current_floor");
+
+                    b.Property<int>("DestinationFloor")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("destination_floor");
+
+                    b.Property<string>("DestinationFloors")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("destination_floors");
+
+                    b.Property<int>("DoorStatus")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("door_status");
 
                     b.Property<string>("ElevatorDirection")
                         .IsRequired()
@@ -123,13 +137,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("elevator_type");
 
+                    b.Property<int>("FloorsPerSecond")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("floors_per_second");
+
                     b.Property<int>("Number")
                         .HasColumnType("INTEGER")
                         .HasColumnName("number");
 
-                    b.Property<double>("Speed")
-                        .HasColumnType("REAL")
-                        .HasColumnName("speed");
+                    b.Property<int>("QueueCapacity")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("queue_capacity");
 
                     b.Property<Guid?>("UpdatedByUserId")
                         .HasColumnType("TEXT")
@@ -159,85 +177,86 @@ namespace Infrastructure.Migrations
                         {
                             Id = new Guid("852bb6fa-1831-49ef-a0d9-5bfa5f567841"),
                             BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
                             CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                             CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentFloor = 1,
+                            DestinationFloor = 0,
+                            DestinationFloors = "",
+                            DoorStatus = 0,
                             ElevatorDirection = "None",
                             ElevatorStatus = "Active",
-                            ElevatorType = "Passenger",
+                            ElevatorType = "HighSpeed",
+                            FloorsPerSecond = 5,
                             Number = 1,
-                            Speed = 0.5
+                            QueueCapacity = 3
                         },
                         new
                         {
                             Id = new Guid("14ef29a8-001e-4b70-93b6-bfdb00237d46"),
                             BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
                             CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                             CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentFloor = 1,
+                            DestinationFloor = 0,
+                            DestinationFloors = "",
+                            DoorStatus = 0,
                             ElevatorDirection = "None",
                             ElevatorStatus = "Active",
                             ElevatorType = "Passenger",
+                            FloorsPerSecond = 1,
                             Number = 2,
-                            Speed = 0.5
+                            QueueCapacity = 3
                         },
                         new
                         {
                             Id = new Guid("966b1041-ff39-432b-917c-b0a14ddce0bd"),
                             BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
                             CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                             CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentFloor = 1,
+                            DestinationFloor = 0,
+                            DestinationFloors = "",
+                            DoorStatus = 0,
                             ElevatorDirection = "None",
                             ElevatorStatus = "Active",
                             ElevatorType = "Passenger",
+                            FloorsPerSecond = 1,
                             Number = 3,
-                            Speed = 0.5
+                            QueueCapacity = 3
                         },
                         new
                         {
                             Id = new Guid("b8557436-6472-4ad7-b111-09c8a023c463"),
                             BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
                             CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                             CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentFloor = 1,
+                            DestinationFloor = 0,
+                            DestinationFloors = "",
+                            DoorStatus = 0,
                             ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
+                            ElevatorStatus = "Maintenance",
                             ElevatorType = "Passenger",
+                            FloorsPerSecond = 1,
                             Number = 4,
-                            Speed = 0.5
+                            QueueCapacity = 3
                         },
                         new
                         {
                             Id = new Guid("bbfbdffa-f7cd-4241-a222-85a733098782"),
                             BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 10,
                             CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
                             CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CurrentFloor = 1,
+                            DestinationFloor = 0,
+                            DestinationFloors = "",
+                            DoorStatus = 0,
                             ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "Service",
+                            ElevatorStatus = "OutOfService",
+                            ElevatorType = "Passenger",
+                            FloorsPerSecond = 1,
                             Number = 5,
-                            Speed = 0.5
-                        },
-                        new
-                        {
-                            Id = new Guid("82d562f7-f7d5-4088-b735-9a7b085968d3"),
-                            BuildingId = new Guid("e16e32e7-8db0-4536-b86e-f53e53cd7a0d"),
-                            Capacity = 5,
-                            CreatedByUserId = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            CreatedDateTimeUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CurrentFloor = 1,
-                            ElevatorDirection = "None",
-                            ElevatorStatus = "Active",
-                            ElevatorType = "HighSpeed",
-                            Number = 6,
-                            Speed = 1.0
+                            QueueCapacity = 3
                         });
                 });
 
@@ -281,7 +300,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("31a9cff7-dc59-4135-a762-6e814bab6f9a"),
-                            Email = "admin@buiding.com",
+                            Email = "admin@building.com",
                             FirstName = "Admin",
                             LastName = "Joe",
                             PasswordHash = "55BC042899399B562DD4A363FD250A9014C045B900716FCDC074861EB69C344A-B44367BE2D0B037E31AEEE2649199100"

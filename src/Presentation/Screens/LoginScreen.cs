@@ -3,7 +3,7 @@ using Application.Users.Login;
 using MediatR;
 using Presentation.Extensions;
 using Domain.Common;
-using Infrastructure.Migrations;
+
 using Infrastructure.Persistence.SeedData;
 using Spectre.Console;
 
