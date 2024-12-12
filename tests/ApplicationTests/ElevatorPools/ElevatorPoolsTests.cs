@@ -4,7 +4,7 @@ using Application.Abstractions.Services;
 using Domain.Users;
 using Domain.Elevators;
 using Infrastructure;
-using Infrastructure.Migrations;
+
 using Infrastructure.Persistence.Database;
 using Infrastructure.Persistence.SeedData;
 using Infrastructure.Services;
