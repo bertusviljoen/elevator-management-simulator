@@ -1,5 +1,4 @@
 using Application;
-using Application.Users;
 using Domain.Users;
 using Infrastructure.Database;
 using MediatR;

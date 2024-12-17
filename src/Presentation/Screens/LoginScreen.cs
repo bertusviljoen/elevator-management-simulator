@@ -1,5 +1,4 @@
 using Application;
-using Application.Users;
 using MediatR;
 using Presentation.Extensions;
 using Domain.Common;

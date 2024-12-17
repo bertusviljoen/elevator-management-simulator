@@ -1,7 +1,5 @@
 using Application;
-using Application.Users;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Presentation.Extensions;
 using Domain.Common;
 using Spectre.Console;
