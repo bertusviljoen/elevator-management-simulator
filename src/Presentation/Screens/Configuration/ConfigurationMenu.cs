@@ -3,7 +3,7 @@ using Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console;
 
-namespace Presentation.Screens;
+namespace Presentation;
 
 public class ConfigurationMenu(IServiceProvider serviceProvider) : IScreen<bool>
 {

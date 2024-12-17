@@ -2,9 +2,8 @@ using Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Presentation.Screens;
-using Presentation.Screens.Dashboard;
-using Presentation.Screens.ElevatorControl;
+using Presentation;
+using Presentation.ElevatorControl;
 using Spectre.Console;
 
 namespace Presentation;

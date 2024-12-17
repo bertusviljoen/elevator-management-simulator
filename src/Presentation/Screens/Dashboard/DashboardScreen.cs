@@ -3,10 +3,10 @@ using Application;
 using Domain;
 using Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Extensions;
+using Presentation;
 using Spectre.Console;
 
-namespace Presentation.Screens.Dashboard;
+namespace Presentation;
 
 /// <summary> Dashboard screen which displays the current status of the elevators in the building. </summary>
 public class DashboardScreen(IServiceProvider serviceProvider) : IScreen<bool>

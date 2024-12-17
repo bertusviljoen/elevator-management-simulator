@@ -1,12 +1,12 @@
 using Application;
 using MediatR;
-using Presentation.Extensions;
+using Presentation;
 using Domain;
 
 using Infrastructure;
 using Spectre.Console;
 
-namespace Presentation.Screens;
+namespace Presentation;
 
 public class LoginScreen(IMediator mediator) : IScreen<string>
 {

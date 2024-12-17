@@ -1,8 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Screens;
-using Presentation.Screens.Dashboard;
-using Presentation.Screens.ElevatorControl;
+using Presentation;
+using Presentation.ElevatorControl;
 
 namespace Presentation;
 

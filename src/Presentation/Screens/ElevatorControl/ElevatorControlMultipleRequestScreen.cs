@@ -4,10 +4,10 @@ using Infrastructure;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Presentation.Extensions;
+using Presentation;
 using Spectre.Console;
 
-namespace Presentation.Screens.ElevatorControl;
+namespace Presentation.ElevatorControl;
 
 public class ElevatorControlMultipleRequestScreen(IServiceProvider serviceProvider, 
     ILogger<ElevatorControlMultipleRequestScreen> logger): IScreen<bool>

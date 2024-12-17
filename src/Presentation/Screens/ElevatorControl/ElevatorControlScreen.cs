@@ -3,10 +3,10 @@ using Domain;
 using Infrastructure;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Extensions;
+using Presentation;
 using Spectre.Console;
 
-namespace Presentation.Screens.ElevatorControl;
+namespace Presentation.ElevatorControl;
 
 /// <summary> Elevator Control Screen to request an elevator to a specific floor. </summary>
 public class ElevatorControlScreen(IServiceProvider serviceProvider): IScreen<bool>

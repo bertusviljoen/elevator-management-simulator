@@ -1,6 +1,6 @@
 using Domain;
 
-namespace Presentation.Extensions;
+namespace Presentation;
 
 /// <summary> Extension methods for working with <see cref="Result"/> and <see cref="Result{T}"/>. </summary>
 public static class ResultExtensions

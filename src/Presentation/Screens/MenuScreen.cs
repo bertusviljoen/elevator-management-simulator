@@ -2,7 +2,7 @@ using Spectre.Console;
 using Application;
 using Domain;
 
-namespace Presentation.Screens;
+namespace Presentation;
 
 /// <summary>/// Spectre Console Menu Screen with options to Login, Register or Exit/// </summary>
 public class MenuScreen : IScreen<MenuSelection>

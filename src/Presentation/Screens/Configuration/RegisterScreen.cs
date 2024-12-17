@@ -1,10 +1,10 @@
 using Application;
 using MediatR;
-using Presentation.Extensions;
+using Presentation;
 using Domain;
 using Spectre.Console;
 
-namespace Presentation.Screens;
+namespace Presentation;
 
 public class RegisterScreen(IMediator mediator) : IScreen<bool>
 {
