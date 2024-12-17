@@ -1,10 +1,9 @@
 using Application;
 using Domain;
-using Infrastructure.Persistence.SeedData;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Infrastructure.Services;
+namespace Infrastructure;
 
 /// <summary> Background service for simulating elevator operations. </summary>
 public class ElevatorSimulationHostedService(

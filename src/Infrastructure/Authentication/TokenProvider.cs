@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Infrastructure.Authentication;
+namespace Infrastructure;
 
 internal sealed class TokenProvider(IConfiguration configuration) : ITokenProvider
 {

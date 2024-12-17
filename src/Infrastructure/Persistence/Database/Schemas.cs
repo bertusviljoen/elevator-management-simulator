@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Database;
+﻿namespace Infrastructure;
 
 /// <summary> Static class to hold database schema names. </summary>
 internal static class Schemas

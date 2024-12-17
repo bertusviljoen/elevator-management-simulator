@@ -1,6 +1,6 @@
 using Application;
 using Domain;
-using Infrastructure.Persistence.SeedData;
+using Infrastructure;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

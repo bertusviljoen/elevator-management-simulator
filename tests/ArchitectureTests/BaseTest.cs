@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Application;
 using Domain;
-using Infrastructure.Persistence.Database;
+using Infrastructure;
 using Presentation;
 
 namespace ArchitectureTests;

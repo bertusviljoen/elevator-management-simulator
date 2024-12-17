@@ -1,7 +1,7 @@
 using Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.SeedData;
+namespace Infrastructure;
 
 public static class ApplicationDbContextSeedData
 {

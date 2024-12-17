@@ -2,7 +2,7 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Persistence.DatabaseConfiguration;
+namespace Infrastructure;
 
 internal sealed class ElevatorConfiguration : IEntityTypeConfiguration<Elevator>
 {

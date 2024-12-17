@@ -1,6 +1,6 @@
 ﻿using Domain;
 
-namespace Infrastructure.Time;
+namespace Infrastructure;
 
 internal sealed class DateTimeProvider : IDateTimeProvider
 {

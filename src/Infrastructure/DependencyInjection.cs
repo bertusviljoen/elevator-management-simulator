@@ -1,10 +1,5 @@
 ﻿using System.Text;
 using Application;
-using Infrastructure.Authentication;
-using Infrastructure.Authorization;
-using Infrastructure.Persistance.Interceptors;
-using Infrastructure.Services;
-using Infrastructure.Time;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Domain;
-using Infrastructure.Persistence.Database;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 

@@ -1,10 +1,8 @@
 ﻿using Application;
 using Domain;
-using Infrastructure.Database;
-using Infrastructure.Persistence.SeedData;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.Database;
+namespace Infrastructure;
 
 /// <inheritdoc cref="IApplicationDbContext" />
 public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):

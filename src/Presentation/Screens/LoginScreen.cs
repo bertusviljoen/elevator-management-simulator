@@ -3,7 +3,7 @@ using MediatR;
 using Presentation.Extensions;
 using Domain;
 
-using Infrastructure.Persistence.SeedData;
+using Infrastructure;
 using Spectre.Console;
 
 namespace Presentation.Screens;

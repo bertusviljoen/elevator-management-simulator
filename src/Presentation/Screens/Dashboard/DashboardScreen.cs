@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Application;
 using Domain;
-using Infrastructure.Persistence.SeedData;
+using Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Extensions;
 using Spectre.Console;

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.IdentityModel.JsonWebTokens;
 
-namespace Infrastructure.Authentication;
+namespace Infrastructure;
 
 internal static class ClaimsPrincipalExtensions
 {

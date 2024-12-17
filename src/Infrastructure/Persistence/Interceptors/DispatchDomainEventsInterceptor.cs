@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Domain;
 
-namespace Infrastructure.Persistance.Interceptors;
+namespace Infrastructure;
 
 /// <summary> Dispatch Domain Events Interceptor </summary>
 public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesInterceptor
