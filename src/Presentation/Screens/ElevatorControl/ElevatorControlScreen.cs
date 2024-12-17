@@ -2,13 +2,14 @@ using Application;
 using Domain;
 using Infrastructure;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Presentation.Extensions;
 using Spectre.Console;
 
 namespace Presentation.Screens.ElevatorControl;
 
 /// <summary> Elevator Control Screen to request an elevator to a specific floor. </summary>
-public class ElevatorControlScreen(IMediator mediator): IScreen<bool>
+public class ElevatorControlScreen(IServiceProvider serviceProvider): IScreen<bool>
 {
     public async Task<Result<bool>> ShowAsync(CancellationToken token)
     {
@@ -31,6 +32,8 @@ public class ElevatorControlScreen(IMediator mediator): IScreen<bool>
             await AnsiConsole.Status()
                 .StartAsync("Requesting elevator...", async ctx =>
                 {
+                    var scope = serviceProvider.CreateScope();
+                    var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
                     var request = new RequestElevatorCommand(buildingId, floor);
                     result = await mediator.Send(request, token);
                 });
