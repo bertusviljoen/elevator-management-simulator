@@ -1,6 +1,6 @@
 ﻿using Domain.Users;
 
-namespace Application.Abstractions.Authentication;
+namespace Application;
 
 public interface ITokenProvider
 {

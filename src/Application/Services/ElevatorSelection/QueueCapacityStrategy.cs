@@ -2,7 +2,7 @@ using Domain.Common;
 using Domain.Elevators;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Services.ElevatorSelection;
+namespace Application;
 
 /// <summary> Strategy that selects an elevator based on its current queue capacity </summary>
 public class QueueCapacityStrategy(ILogger<QueueCapacityStrategy> logger) : IQueueCapacityStrategy

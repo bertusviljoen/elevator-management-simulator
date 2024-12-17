@@ -1,4 +1,4 @@
-namespace Application.Screens;
+namespace Application;
 
 /// <summary> Menu Selections </summary>
 public enum MenuSelection

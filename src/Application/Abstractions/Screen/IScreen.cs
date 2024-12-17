@@ -1,6 +1,6 @@
 using Domain.Common;
 
-namespace Application.Abstractions.Screen;
+namespace Application;
 
 /// <summary>
 /// Represents a screen in the application.

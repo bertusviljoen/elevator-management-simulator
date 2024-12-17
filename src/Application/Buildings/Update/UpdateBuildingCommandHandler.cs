@@ -1,11 +1,9 @@
-using Application.Abstractions.Authentication;
-using Application.Abstractions.Data;
-using Application.Abstractions.Messaging;
+using Application;
 using Domain.Buildings;
 using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Buildings.Update;
+namespace Application;
 
 public class UpdateBuildingCommandHandler(
     IApplicationDbContext applicationDbContext) : ICommandHandler<UpdateBuildingCommand>

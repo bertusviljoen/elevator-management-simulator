@@ -1,6 +1,6 @@
-using Application.Abstractions.Messaging;
+using Application;
 
-namespace Application.Buildings.Update;
+namespace Application;
 
 /// <summary> Command to update a building's name and floors </summary>
 public sealed record UpdateBuildingCommand(Guid Id, string Name, int NumberOfFloors)

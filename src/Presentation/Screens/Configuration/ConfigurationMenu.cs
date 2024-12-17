@@ -1,5 +1,4 @@
-using Application.Abstractions.Screen;
-using Application.Screens;
+using Application;
 using Domain.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console;

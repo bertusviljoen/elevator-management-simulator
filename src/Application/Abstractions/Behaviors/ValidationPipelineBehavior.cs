@@ -5,7 +5,7 @@ using MediatR;
 using Domain.Common;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Abstractions.Behaviors;
+namespace Application;
 
 internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
     IEnumerable<IValidator<TRequest>> validators,

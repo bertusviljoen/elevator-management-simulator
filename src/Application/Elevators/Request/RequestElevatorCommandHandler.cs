@@ -1,13 +1,11 @@
-using Application.Abstractions.Data;
-using Application.Abstractions.Messaging;
-using Application.Abstractions.Services;
+using Application;
 using Domain.Buildings;
 using Domain.Common;
 using Domain.Elevators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Elevators.Request;
+namespace Application;
 
 /// <summary> Request an elevator to a specific floor. </summary>
 public class RequestElevatorCommandHandler(

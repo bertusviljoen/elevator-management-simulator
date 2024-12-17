@@ -1,11 +1,9 @@
-using Application.Abstractions.Authentication;
-using Application.Abstractions.Data;
-using Application.Abstractions.Messaging;
+using Application;
 using Domain.Buildings;
 using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Buildings.Create;
+namespace Application;
 
 public sealed class CreateBuildingCommandHandler(
     IApplicationDbContext applicationDbContext,

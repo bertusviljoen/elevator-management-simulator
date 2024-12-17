@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Application.Abstractions.Messaging;
+using Application;
 using Domain.Users;
 using Infrastructure.Database;
 using Infrastructure.Persistence.Database;

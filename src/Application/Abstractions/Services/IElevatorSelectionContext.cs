@@ -1,7 +1,7 @@
 using Domain.Common;
 using Domain.Elevators;
 
-namespace Application.Services.ElevatorSelection;
+namespace Application;
 
 /// <summary> Elevator selection context for selecting an elevator based on a strategy. </summary>
 public interface IElevatorSelectionContext

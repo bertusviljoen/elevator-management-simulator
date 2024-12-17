@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Domain.Common;
 
-namespace Application.Abstractions.Messaging;
+namespace Application;
 
 public interface ICommand : IRequest<Result>, IBaseCommand;
 

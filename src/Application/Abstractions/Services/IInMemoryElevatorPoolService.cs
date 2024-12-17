@@ -1,7 +1,7 @@
 using Domain.Common;
 using Domain.Elevators;
 
-namespace Application.Abstractions.Services;
+namespace Application;
 
 /// <summary> Interface for managing the in-memory pool of elevators. </summary>
 public interface IInMemoryElevatorPoolService

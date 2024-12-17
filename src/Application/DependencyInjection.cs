@@ -1,7 +1,4 @@
-﻿using Application.Abstractions.Behaviors;
-using Application.Abstractions.Services;
-using Application.Services;
-using Application.Services.ElevatorSelection;
+﻿using Application;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 

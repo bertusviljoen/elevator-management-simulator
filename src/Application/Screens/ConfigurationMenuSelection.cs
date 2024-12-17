@@ -1,4 +1,4 @@
-namespace Application.Screens;
+namespace Application;
 
 public enum ConfigurationMenuSelection
 {

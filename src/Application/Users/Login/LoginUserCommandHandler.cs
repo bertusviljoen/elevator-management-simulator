@@ -1,11 +1,9 @@
-﻿using Application.Abstractions.Authentication;
-using Application.Abstractions.Data;
-using Application.Abstractions.Messaging;
+﻿using Application;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Domain.Common;
 
-namespace Application.Users.Login;
+namespace Application.Users;
 
 
 internal sealed class LoginUserCommandHandler(

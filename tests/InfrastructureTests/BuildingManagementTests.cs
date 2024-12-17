@@ -1,5 +1,4 @@
 using Application;
-using Application.Abstractions.Data;
 using Infrastructure;
 using Microsoft.Extensions.Hosting;
 using FluentValidation;

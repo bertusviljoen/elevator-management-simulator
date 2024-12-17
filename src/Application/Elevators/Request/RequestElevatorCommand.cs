@@ -1,6 +1,6 @@
-using Application.Abstractions.Messaging;
+using Application;
 
-namespace Application.Elevators.Request;
+namespace Application;
 
 /// <summary> Command to request an elevator to a specific floor. </summary>
 public record RequestElevatorCommand(Guid BuildingId, int FloorNumber) : ICommand<Guid>;

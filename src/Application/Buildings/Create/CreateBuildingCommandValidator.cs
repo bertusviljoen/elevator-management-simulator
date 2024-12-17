@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Application.Buildings.Create;
+namespace Application;
 
 internal sealed class CreateBuildingCommandValidator
     : AbstractValidator<CreateBuildingCommand>

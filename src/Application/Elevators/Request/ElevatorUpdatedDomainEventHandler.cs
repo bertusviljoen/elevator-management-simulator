@@ -2,7 +2,7 @@ using Domain.Elevators;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Elevators.Request;
+namespace Application;
 
 internal sealed class ElevatorUpdatedDomainEventHandler(ILogger<ElevatorUpdatedDomainEventHandler> logger) : INotificationHandler<ElevatorUpdatedDomainEvent>
 {

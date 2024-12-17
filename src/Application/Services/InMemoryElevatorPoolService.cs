@@ -1,13 +1,12 @@
 using System.Collections.Concurrent;
-using Application.Abstractions.Data;
-using Application.Abstractions.Services;
+using Application;
 using Domain.Common;
 using Domain.Elevators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Services;
+namespace Application;
 
 ///<inheritdoc cref="IInMemoryElevatorPoolService"/> 
 public sealed class InMemoryElevatorPoolService(

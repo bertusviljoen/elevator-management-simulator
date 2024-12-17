@@ -1,6 +1,4 @@
 using Application;
-using Application.Abstractions.Data;
-using Application.Abstractions.Services;
 using Domain.Users;
 using Domain.Elevators;
 using Infrastructure;

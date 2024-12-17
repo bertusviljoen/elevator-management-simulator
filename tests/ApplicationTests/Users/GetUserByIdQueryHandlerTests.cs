@@ -1,5 +1,5 @@
-using Application.Abstractions.Authentication;
-using Application.Users.GetById;
+using Application;
+using Application.Users;
 using Domain.Users;
 using Infrastructure.Database;
 using MediatR;
@@ -48,7 +48,7 @@ public class GetUserByIdQueryHandlerTests
         var handler = new GetUserByIdQueryHandler(context);
 
         // Act
-        Result<UserResponse> result = await handler.Handle(query, CancellationToken.None);
+        Result<UserResponseByIdQuery> result = await handler.Handle(query, CancellationToken.None);
 
         // Assert
         Assert.False(result.IsSuccess);

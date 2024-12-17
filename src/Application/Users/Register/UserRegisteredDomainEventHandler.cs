@@ -1,7 +1,7 @@
 ﻿using Domain.Users;
 using MediatR;
 
-namespace Application.Users.Register;
+namespace Application.Users;
 
 internal sealed class UserRegisteredDomainEventHandler : INotificationHandler<UserRegisteredDomainEvent>
 {

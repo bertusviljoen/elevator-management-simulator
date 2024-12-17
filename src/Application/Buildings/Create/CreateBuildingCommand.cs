@@ -1,6 +1,6 @@
-using Application.Abstractions.Messaging;
+using Application;
 
-namespace Application.Buildings.Create;
+namespace Application;
 
 public sealed record CreateBuildingCommand(string Name, int NumberOfFloors)
     : ICommand<Guid>;

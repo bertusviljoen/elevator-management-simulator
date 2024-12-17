@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using Serilog.Context;
 using Domain.Common;
 
-namespace Application.Abstractions.Behaviors;
+namespace Application;
 
 internal sealed class RequestLoggingPipelineBehavior<TRequest, TResponse>(
     ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger)

@@ -1,7 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using Application;
-using Application.Abstractions.Authentication;
-using Application.Abstractions.Data;
 using Domain.Users;
 using Infrastructure;
 using Microsoft.Extensions.DependencyInjection;

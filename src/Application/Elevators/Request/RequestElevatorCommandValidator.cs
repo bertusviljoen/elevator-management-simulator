@@ -1,7 +1,7 @@
 using FluentValidation;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Elevators.Request;
+namespace Application;
 
 public class RequestElevatorCommandValidator : AbstractValidator<RequestElevatorCommand>
 {

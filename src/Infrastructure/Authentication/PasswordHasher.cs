@@ -1,5 +1,5 @@
 ﻿using System.Security.Cryptography;
-using Application.Abstractions.Authentication;
+using Application;
 
 namespace Infrastructure.Authentication;
 

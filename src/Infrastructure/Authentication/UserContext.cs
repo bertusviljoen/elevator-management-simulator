@@ -1,4 +1,4 @@
-﻿using Application.Abstractions.Authentication;
+﻿using Application;
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Authentication;

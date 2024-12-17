@@ -1,5 +1,5 @@
-using Application.Abstractions.Screen;
-using Application.Users.Register;
+using Application;
+using Application.Users;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Presentation.Extensions;

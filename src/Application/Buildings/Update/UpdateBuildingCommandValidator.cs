@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Application.Buildings.Update;
+namespace Application;
 
 public class UpdateBuildingCommandValidator : AbstractValidator<UpdateBuildingCommand>
 {

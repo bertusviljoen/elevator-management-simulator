@@ -1,6 +1,6 @@
 using Domain.Common;
 
-namespace Application.Abstractions.Services;
+namespace Application;
 
 /// <summary> Elevator Orchestrator service for managing elevator requests. </summary>
 public interface IElevatorOrchestratorService

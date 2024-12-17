@@ -1,10 +1,9 @@
-using Application.Abstractions.Services;
-using Application.Services.ElevatorSelection;
+using Application;
 using Domain.Common;
 using Domain.Elevators;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Services;
+namespace Application;
 
 /// <summary> Service for orchestrating elevator requests. </summary>
 public class ElevatorOrchestratorService(

@@ -1,5 +1,5 @@
-﻿using Application.Abstractions.Messaging;
+﻿using Application;
 
-namespace Application.Users.GetByEmail;
+namespace Application;
 
 public sealed record GetUserByEmailQuery(string Email) : IQuery<UserResponse>;

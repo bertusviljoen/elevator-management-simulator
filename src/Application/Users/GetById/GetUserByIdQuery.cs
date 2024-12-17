@@ -1,5 +1,5 @@
-﻿using Application.Abstractions.Messaging;
+﻿using Application;
 
-namespace Application.Users.GetById;
+namespace Application.Users;
 
-public sealed record GetUserByIdQuery(Guid UserId) : IQuery<UserResponse>;
+public sealed record GetUserByIdQuery(Guid UserId) : IQuery<UserResponseByIdQuery>;

@@ -1,7 +1,7 @@
 using Domain.Elevators;
 using Domain.Common;
 
-namespace Application.Services.ElevatorSelection;
+namespace Application;
 
 /// <summary> Interface for elevator selection strategies </summary>
 public interface IElevatorSelectionStrategy

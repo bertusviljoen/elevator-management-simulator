@@ -2,7 +2,7 @@ using Domain.Common;
 using Domain.Elevators;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Services.ElevatorSelection;
+namespace Application;
 
 // <inheritdoc />
 public class ElevatorSelectionContext(

@@ -1,20 +1,18 @@
-﻿using Application.Abstractions.Authentication;
-using Application.Abstractions.Data;
-using Application.Abstractions.Messaging;
+﻿using Application;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Domain.Common;
 
-namespace Application.Users.GetById;
+namespace Application.Users;
 
 internal sealed class GetUserByIdQueryHandler(IApplicationDbContext context)
-    : IQueryHandler<GetUserByIdQuery, UserResponse>
+    : IQueryHandler<GetUserByIdQuery, UserResponseByIdQuery>
 {
-    public async Task<Result<UserResponse>> Handle(GetUserByIdQuery query, CancellationToken cancellationToken)
+    public async Task<Result<UserResponseByIdQuery>> Handle(GetUserByIdQuery query, CancellationToken cancellationToken)
     {
-        UserResponse? user = await context.Users
+        UserResponseByIdQuery? user = await context.Users
             .Where(u => u.Id == query.UserId)
-            .Select(u => new UserResponse
+            .Select(u => new UserResponseByIdQuery
             {
                 Id = u.Id,
                 FirstName = u.FirstName,
@@ -25,7 +23,7 @@ internal sealed class GetUserByIdQueryHandler(IApplicationDbContext context)
 
         if (user is null)
         {
-            return Result.Failure<UserResponse>(UserErrors.NotFound(query.UserId));
+            return Result.Failure<UserResponseByIdQuery>(UserErrors.NotFound(query.UserId));
         }
 
         return user;

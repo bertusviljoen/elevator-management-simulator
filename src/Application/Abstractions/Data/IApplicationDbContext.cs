@@ -3,7 +3,7 @@ using Domain.Buildings;
 using Domain.Elevators;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Abstractions.Data;
+namespace Application;
 
 /// <summary> Application database context. </summary>
 public interface IApplicationDbContext
