@@ -1,4 +1,4 @@
-﻿namespace Domain.Common;
+﻿namespace Domain;
 
 public sealed record ValidationError : Error
 {

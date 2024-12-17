@@ -1,5 +1,3 @@
-﻿using Domain.Common;
-
-namespace Domain.Users;
+﻿namespace Domain;
 
 public sealed record UserRegisteredDomainEvent(Guid UserId) : IDomainEvent;

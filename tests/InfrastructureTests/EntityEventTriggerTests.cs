@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Application;
-using Domain.Users;
+using Domain;
 using Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

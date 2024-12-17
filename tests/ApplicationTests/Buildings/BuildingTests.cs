@@ -1,12 +1,8 @@
 using Application;
-using Domain.Buildings;
 using Infrastructure;
-using Infrastructure.Persistence.Database;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Moq;
 
 namespace ApplicationTests.Buildings;
 

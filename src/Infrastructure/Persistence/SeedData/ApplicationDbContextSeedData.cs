@@ -1,10 +1,5 @@
-using Domain.Buildings;
-using Domain.Elevators;
-using Domain.Users;
-using Infrastructure.Authentication;
-using Infrastructure.Persistence.Database;
+using Domain;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Persistence.SeedData;
 

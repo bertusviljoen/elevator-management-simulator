@@ -1,5 +1,5 @@
 using Application;
-using Domain.Common;
+using Domain;
 using Infrastructure.Persistence.SeedData;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,7 +1,6 @@
 using Application;
-using Domain.Elevators;
+using Domain;
 using Infrastructure.Persistence.SeedData;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 

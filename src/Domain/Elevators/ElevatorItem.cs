@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Domain.Elevators;
+namespace Domain;
 
 /// <summary> Data transfer object representing an elevator in memory. </summary>
 public class ElevatorItem

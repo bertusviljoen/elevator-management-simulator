@@ -1,8 +1,6 @@
 using System.Diagnostics;
 using Application;
-using Domain.Common;
-using Domain.Elevators;
-
+using Domain;
 using Infrastructure.Persistence.SeedData;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Extensions;

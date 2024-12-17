@@ -1,6 +1,4 @@
-using Domain.Common;
-
-namespace Domain.Elevators;
+namespace Domain;
 
 public static class ElevatorErrors
 {

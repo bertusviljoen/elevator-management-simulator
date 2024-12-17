@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Domain.Common;
+namespace Domain;
 
 public class Result
 {

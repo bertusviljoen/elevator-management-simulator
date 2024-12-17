@@ -1,8 +1,7 @@
 using Application;
-using Domain.Common;
+using Domain;
 using Infrastructure.Persistence.SeedData;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Presentation.Extensions;
 using Spectre.Console;
 

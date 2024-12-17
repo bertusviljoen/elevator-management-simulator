@@ -1,10 +1,5 @@
-using Infrastructure.Database;
-using Infrastructure.Persistence.Database;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Presentation.Screens;
 using Presentation.Screens.Dashboard;
 using Presentation.Screens.ElevatorControl;

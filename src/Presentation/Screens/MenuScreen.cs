@@ -1,6 +1,6 @@
 using Spectre.Console;
 using Application;
-using Domain.Common;
+using Domain;
 
 namespace Presentation.Screens;
 

@@ -1,4 +1,4 @@
-namespace Domain.Elevators;
+namespace Domain;
 
 /// <summary> Enum representing the type of elevator. </summary>
 public enum ElevatorType

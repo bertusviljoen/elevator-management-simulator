@@ -1,7 +1,7 @@
 using Application;
 using MediatR;
 using Presentation.Extensions;
-using Domain.Common;
+using Domain;
 using Spectre.Console;
 
 namespace Presentation.Screens;

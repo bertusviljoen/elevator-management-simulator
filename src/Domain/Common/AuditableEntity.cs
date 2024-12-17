@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Domain.Users;
 
-namespace Domain.Common;
+namespace Domain;
 
 /// <summary> Base abstract class for entities that have audit and timestamp tracking. </summary>
 public abstract class AuditableEntity 

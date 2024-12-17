@@ -1,11 +1,9 @@
 ﻿using Application;
 using Infrastructure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using DependencyInjection = Infrastructure.DependencyInjection;
 
 namespace Presentation;
 

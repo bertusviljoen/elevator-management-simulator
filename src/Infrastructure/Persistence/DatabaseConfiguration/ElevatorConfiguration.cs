@@ -1,4 +1,4 @@
-using Domain.Elevators;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

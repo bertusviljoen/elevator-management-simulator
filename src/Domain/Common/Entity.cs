@@ -1,4 +1,4 @@
-﻿namespace Domain.Common;
+﻿namespace Domain;
 
 /// <summary> Base abstract class for entities which have domain events. </summary>
 public abstract class Entity

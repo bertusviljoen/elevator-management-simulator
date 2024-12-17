@@ -1,4 +1,4 @@
-namespace Domain.Common;
+namespace Domain;
 
 /// <summary> Describes database entities that tracks timestamps when data is modified. </summary>
 public interface ITimeAuditedEntity

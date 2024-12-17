@@ -1,7 +1,7 @@
 using Application;
 using MediatR;
 using Presentation.Extensions;
-using Domain.Common;
+using Domain;
 
 using Infrastructure.Persistence.SeedData;
 using Spectre.Console;

@@ -1,6 +1,4 @@
-using Domain.Users;
-
-namespace Domain.Common;
+namespace Domain;
 
 /// <summary> Describes database entities that tracks users that modify data. </summary>
 public interface IUserAuditedEntity

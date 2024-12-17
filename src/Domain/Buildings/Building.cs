@@ -1,6 +1,4 @@
-using Domain.Common;
-
-namespace Domain.Buildings;
+namespace Domain;
 
 /// <summary> Entity representing a building. </summary>
 public sealed class Building : AuditableEntity

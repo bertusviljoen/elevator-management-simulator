@@ -1,10 +1,8 @@
 using Application;
-using Domain.Users;
-using Infrastructure.Database;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Domain.Common;
+using Domain;
 using Infrastructure.Persistence.Database;
 
 namespace ApplicationTests.Users;

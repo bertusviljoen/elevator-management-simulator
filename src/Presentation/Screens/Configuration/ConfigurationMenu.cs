@@ -1,5 +1,5 @@
 using Application;
-using Domain.Common;
+using Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console;
 

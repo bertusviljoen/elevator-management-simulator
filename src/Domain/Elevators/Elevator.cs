@@ -1,8 +1,6 @@
 using System.Text.Json.Serialization;
-using Domain.Buildings;
-using Domain.Common;
 
-namespace Domain.Elevators;
+namespace Domain;
 
 /// <summary> Entity representing an elevator in a building. </summary>
 public class Elevator : AuditableEntity

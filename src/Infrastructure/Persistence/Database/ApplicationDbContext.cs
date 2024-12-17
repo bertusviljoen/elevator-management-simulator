@@ -1,7 +1,5 @@
 ﻿using Application;
-using Domain.Buildings;
-using Domain.Elevators;
-using Domain.Users;
+using Domain;
 using Infrastructure.Database;
 using Infrastructure.Persistence.SeedData;
 using Microsoft.EntityFrameworkCore;

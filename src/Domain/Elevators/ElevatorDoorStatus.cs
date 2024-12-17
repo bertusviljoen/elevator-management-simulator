@@ -1,4 +1,4 @@
-namespace Domain.Elevators;
+namespace Domain;
 
 /// <summary> Enum representing the status of an elevator. </summary>
 public enum ElevatorDoorStatus

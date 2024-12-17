@@ -1,15 +1,6 @@
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using Application;
-using Domain.Buildings;
-using Domain.Common;
-using Domain.Elevators;
-using Domain.Users;
+using Domain;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
@@ -622,7 +613,7 @@ public sealed class CreateBuildingCommandHandler(
     public async Task<Result<Guid>> Handle(CreateBuildingCommand request, CancellationToken cancellationToken)
     {
         //check if building with the same name exists
-        Domain.Buildings.Building? building = await applicationDbContext.Buildings
+        Domain.Building? building = await applicationDbContext.Buildings
             .SingleOrDefaultAsync(a => a.Name == request.Name, cancellationToken);
 
         if (building is not null)
@@ -631,7 +622,7 @@ public sealed class CreateBuildingCommandHandler(
         }
         
         //create the building
-        building = new Domain.Buildings.Building
+        building = new Domain.Building
         {
             Id = Guid.NewGuid(),
             Name = request.Name,

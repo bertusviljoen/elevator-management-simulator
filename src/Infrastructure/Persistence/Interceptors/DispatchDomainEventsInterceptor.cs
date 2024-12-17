@@ -1,8 +1,7 @@
-using System.Diagnostics;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Domain.Common;
+using Domain;
 
 namespace Infrastructure.Persistance.Interceptors;
 

@@ -1,10 +1,7 @@
 using Application;
 using Infrastructure;
 using Microsoft.Extensions.Hosting;
-using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Domain.Users;
 
 namespace InfrastructureTests.Building;
 
@@ -21,7 +18,7 @@ public class BuildingManagementTests
             })
             .Build();
 
-        var building = new Domain.Buildings.Building()
+        var building = new Domain.Building()
         {
             Id = Guid.NewGuid(),
             Name = Faker.Company.Name(),

@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Application;
-using Domain.Users;
-using Infrastructure.Database;
+using Domain;
 using Infrastructure.Persistence.Database;
 using Presentation;
 

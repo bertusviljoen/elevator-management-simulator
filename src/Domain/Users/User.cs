@@ -1,6 +1,4 @@
-﻿using Domain.Common;
-
-namespace Domain.Users;
+﻿namespace Domain;
 
 /// <summary> The following class represents a user entity. </summary>
 public sealed class User : Entity

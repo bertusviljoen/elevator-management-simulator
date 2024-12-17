@@ -1,6 +1,4 @@
-using Domain.Common;
-
-namespace Domain.Buildings;
+namespace Domain;
 
 public static class BuildingErrors
 {

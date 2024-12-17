@@ -1,15 +1,9 @@
 using Application;
-using Domain.Users;
-using Domain.Elevators;
+using Domain;
 using Infrastructure;
-
-using Infrastructure.Persistence.Database;
 using Infrastructure.Persistence.SeedData;
-using Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Xunit.Sdk;
 
 namespace ApplicationTests.ElevatorPools;
 
@@ -88,13 +82,13 @@ public class ElevatorPoolsTests
         }
         await dbContext.SaveChangesAsync(CancellationToken.None);
 
-        foreach (Domain.Buildings.Building seedBuilding in ApplicationDbContextSeedData.GetSeedBuildings())
+        foreach (Domain.Building seedBuilding in ApplicationDbContextSeedData.GetSeedBuildings())
         {
             dbContext.Buildings.Add(seedBuilding);
         }
         await dbContext.SaveChangesAsync(CancellationToken.None);
 
-        foreach (Domain.Elevators.Elevator seedElevator in ApplicationDbContextSeedData.GetSeedElevators())
+        foreach (Domain.Elevator seedElevator in ApplicationDbContextSeedData.GetSeedElevators())
         {
             dbContext.Elevators.Add(seedElevator);
         }
